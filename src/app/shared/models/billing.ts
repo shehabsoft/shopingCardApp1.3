@@ -1,11 +1,9 @@
+import { User, UserDetail } from "./user";
+
 export class Billing {
-  $key: string;
-  firstName: string;
-  lastName: string;
-  emailId: string;
-  address1: string;
-  address2: string;
-  country: string;
-  state: string;
-  zip: string;
+  id: number;
+  user: User;
+  totalPrice: number;
+  userDetails: UserDetail;
+ 
 }

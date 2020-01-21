@@ -12,11 +12,12 @@ export class Product {
   ratings: number;
   favourite: boolean;
   productSeller: string;
-  name_ar: string;
-  name_en: string;
+  nameAr: string;
+  nameEn: string;
   price: number;
   details: string;
   updated_at: Date;
   id: number;
-  img_url: string;
+  imgUrl: string;
+  img_data: Blob;
 }

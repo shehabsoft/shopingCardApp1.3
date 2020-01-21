@@ -48,7 +48,10 @@ export class AuthService {
     this.userLogin = user;
     const url = userApiUrl + "signIn/";
     return this.http.post<User>(url, user, httpOptions).pipe(
-      tap(herso => console.log(herso),
+      tap(herso => {
+        console.log(herso);
+        this.userLogin = herso
+      },
         err => console.log(err))
      
 
@@ -58,7 +61,9 @@ export class AuthService {
     
   }
   isLoggedIn(): boolean {
-    if (this.userLogin !== null) {
+    if (this.userLogin !== null && this.userLogin.id !== null)//&& typeof(this.userLogin.email ) != "undefined"
+    {
+      console.log("Email Is "+this.userLogin.id);
       return true;
     }
   }
@@ -77,31 +82,19 @@ export class AuthService {
   }
 
   getLoggedInUser(): User {
-    const loggedUser: User = new User();
-    const user = this.firebaseAuth.auth.currentUser;
+     this.userLogin;
+   
+    console.log(this.userLogin);
+    
 
-    if (user) {
-      this.userDetails = user;
-      if (user != null) {
-        loggedUser.$key = user.uid;
-        loggedUser.userName = user.displayName;
-        loggedUser.email = user.email;
-        loggedUser.phoneNumber = user.phoneNumber;
-        loggedUser.avatar = user.photoURL;
-        loggedUser.isAdmin = this.dbUser["isAdmin"];
-      }
-    } else {
-      this.userDetails = null;
-    }
-
-    return loggedUser;
+    return this.userLogin;
   }
 
   isAdmin(): boolean {
     const user = this.getLoggedInUser();
     // console.log("loggedUSer", user)
     if (user != null) {
-      if (user.isAdmin === true) {
+      if (user.admin === true) {
         return true;
       }
     }

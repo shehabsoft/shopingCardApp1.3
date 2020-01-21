@@ -4,7 +4,7 @@
     <div class="col-sm-4">
       <div class="product-image">
         <div class="view hm-zoom z-depth-2" style="cursor: pointer">
-          <img [src]="product.img_url"  [alt]="product.name_ar" width="100%" class="img-fluid rounded">
+          <img [src]="product.imgUrl"  [alt]="product.name_ar" width="100%" class="img-fluid rounded">
         </div>
         <div class="" style="margin-top:15px">
           <ul class="list-group mb-3">
@@ -18,7 +18,7 @@
               <div>
                 <h6 class="my-0">Product Seller</h6>
               </div>
-              <span class="text-muted" style="color:crimson !important">{{product.name_ar}}</span>
+              <span class="text-muted" style="color:crimson !important">{{product.nameAr}}</span>
             </li>
           </ul>
           <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
@@ -32,15 +32,15 @@
           <tbody>
             <tr>
               <th scope="row">Product Name</th>
-              <td>{{product.name_ar}}</td>
+              <td>{{product.nameAr}}</td>
             </tr>
             <tr>
               <th scope="row">Product Description</th>
-              <td>{{product.name_en}}</td>
+              <td>{{product.nameEn}}</td>
             </tr>
             <tr>
               <th scope="row">Product Category</th>
-              <td>{{product.name_ar}}</td>
+              <td>{{product.nameAr}}</td>
             </tr>
             <tr>
               <th scope="row">No. of quantity available</th>

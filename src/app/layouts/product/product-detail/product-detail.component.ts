@@ -35,7 +35,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         console.log(hero);
         this.product = hero;
 
-        console.log("Product Details " + this.product.name_en);
+        console.log("Product Details " + this.product.nameEn);
       });
 		 
 	}

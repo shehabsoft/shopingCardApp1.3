@@ -4,6 +4,7 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { ProductService } from '../../../shared/services/product.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { ProductF } from 'src/app/shared/models/productF';
+import { Observable } from 'rxjs';
 declare var toastr: any;
 @Component({
 	selector: 'app-product-list',
@@ -15,9 +16,10 @@ export class ProductListComponent implements OnInit{
 	productList: ProductF[];
 	loading = false;
 	brands = ['All', 'SUEZS', 'CANAL', 'ASSIUT', 'Nokia', 'Motorolla'];
-  
+   imageUrl;
 	selectedBrand: 'All';
 
+  imageBlobUrl: string | null = null;
 	page = 1;
 	constructor(
 		public authService: AuthService,
@@ -40,7 +42,6 @@ export class ProductListComponent implements OnInit{
 				this.productList = [];
               product.forEach((element) => {
                 console.log(element);
-                
                 this.productList.push(element);
               
               });
@@ -50,7 +51,19 @@ export class ProductListComponent implements OnInit{
 				this.toastrService.error('Error while fetching Products', err);
 			}
 		);
-	}
+  }
+
+  getImageUrl(image: Blob): string {
+    let reader = new FileReader();
+    console.log("image Data :" + image);
+    reader.addEventListener("load", () => {
+      this.imageBlobUrl = reader.result.toString();
+    }, false);
+    if (image) {
+      reader.readAsDataURL(image);
+    }
+    return this.imageBlobUrl;
+  }
 
 	removeProduct(key: string) {
       this.productService.deleteProduct(key).subscribe(

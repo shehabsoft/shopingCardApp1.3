@@ -1,5 +1,6 @@
 export class User {
   $key: string;
+  id: number;
   userName: string;
   email: string;
   password: string;
@@ -9,8 +10,10 @@ export class User {
   };
   phoneNumber: string;
   createdOn: string;
-  isAdmin: boolean;
+  admin: boolean;
   avatar: string;
+  mobileNumber: number;
+  address: string;
 }
 
 export class UserDetail {

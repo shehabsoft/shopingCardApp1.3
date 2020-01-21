@@ -8,6 +8,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductF } from '../models/productF';
 import { EventEmitter } from 'events';
+import { Order } from '../models/order';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -31,15 +32,16 @@ export class ProductService {
 		private authService: AuthService,
       private toastrService: ToastrService, private http: HttpClient 
 	) {
-		this.calculateLocalFavProdCounts();
-      this.calculateLocalCartProdCounts();
+		
       this.getProducts().subscribe((heros) => {
         this.products = heros;
       });
+      this.calculateLocalFavProdCounts();
+      this.calculateLocalCartProdCounts();
 	}
   getProducts1(): Observable<ProductF[]> {
     return this.http.get<ProductF[]>(apiUrl, httpOptions).pipe(
-      tap(heroes => console.log('fetched products'))
+      tap(heroes => console.log(heroes))
       
 
     );
@@ -62,7 +64,7 @@ export class ProductService {
   createProduct1(data: ProductF): Observable<ProductF> {
     console.log("Before Creation")
     data.id = 1000;
-    
+    console.log(data);
     return this.http.post<ProductF>(apiUrl, data, httpOptions).pipe(
       tap(hero => {
         console.log(hero);
@@ -179,9 +181,16 @@ export class ProductService {
 	addToCart(data: ProductF): void {
       let a: ProductF[];
       data.quantity = 1;
-		a = JSON.parse(localStorage.getItem('avct_item')) || [];
+      if (localStorage.getItem('avct_item') === "undefined") {
 
-		a.push(data);
+        a = [];
+      } else {
+        a = JSON.parse(localStorage.getItem('avct_item')) 
+      }
+   
+
+      a.push(data);
+      console.log("Cart Items " + data.id);
 		this.toastrService.wait('Adding Product to Cart', 'Product Adding to the cart');
 		setTimeout(() => {
 			localStorage.setItem('avct_item', JSON.stringify(a));
@@ -204,13 +213,45 @@ export class ProductService {
 
 		this.calculateLocalCartProdCounts();
 	}
-
-	// Fetching Locat CartsProducts
-	getLocalCartProducts(): ProductF[] {
-		const products: ProductF[] = JSON.parse(localStorage.getItem('avct_item')) || [];
-
-		return products;
+  resetLocalCartProducts() {
+    let products1: ProductF[];
+    localStorage.setItem('avct_item', JSON.stringify(products1));
+    this.calculateLocalCartProdCounts();
   }
+	// Fetching Locat CartsProducts
+  getLocalCartProducts(): ProductF[] {
+    let products1: ProductF[];
+    if (localStorage.getItem('avct_item') === "undefined") {
+
+      products1 = [];
+    } else {
+      products1 = JSON.parse(localStorage.getItem('avct_item'));  }
+	 
+
+    return products1;
+  }
+
+  // Fetching Locat CartsProducts
+  getLocalOrder(): Order{
+    let order: Order;
+    if (localStorage.getItem('order') === "undefined") {
+
+      order = null;
+    } else {
+      order = JSON.parse(localStorage.getItem('order'));
+    }
+
+
+    return order;
+  }
+
+  setLocalOrder(order:Order) {
+    
+    localStorage.setItem('order', JSON.stringify(order));
+    }
+
+ 
+   
   updateQuantityOnLocalStorage(product: ProductF) {
     const products = this.getLocalCartProducts();
     for (let i = 0; i < products.length; i++) {
@@ -224,7 +265,8 @@ export class ProductService {
 
   }
 	// returning LocalCarts Product Count
-	calculateLocalCartProdCounts() {
+  calculateLocalCartProdCounts() {
+
 		this.navbarCartCount = this.getLocalCartProducts().length;
 	}
 }

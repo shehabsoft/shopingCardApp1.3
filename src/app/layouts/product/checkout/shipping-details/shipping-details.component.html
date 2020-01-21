@@ -4,16 +4,16 @@
     <form class="needs-validation" #userDetailsForm="ngForm" (ngSubmit)="updateUserDetails(userDetailsForm)">
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="firstName">First name</label>
-          <input type="text" class="form-control" id="firstName" [(ngModel)]="userDetail.firstName" name="firstName"
+          <label for="firstName">Full Name</label>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="user.name" name="firstName" [disabled]="true"
             required>
           <div class="invalid-feedback">
             Valid first name is required.
           </div>
         </div>
         <div class="col-md-6 mb-3">
-          <label for="lastName">Last name</label>
-          <input type="text" class="form-control" id="lastName" [(ngModel)]="userDetail.lastName" name="lastName"
+          <label for="lastName">Mobile Number</label>
+          <input type="text" class="form-control" id="lastName" [(ngModel)]="user.mobileNumber" name="mobileNumber" [disabled]="true"
             required>
           <div class="invalid-feedback">
             Valid last name is required.
@@ -25,7 +25,7 @@
         <label for="email">Email
           <span class="text-muted">(Optional)</span>
         </label>
-        <input type="email" class="form-control" id="email" [(ngModel)]="userDetails.emailId" name="email" [disabled]="true">
+        <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" [disabled]="true">
         <div class="invalid-feedback">
           Please enter a valid email address for shipping updates.
         </div>
@@ -33,7 +33,7 @@
 
       <div class="mb-3">
         <label for="address">Address</label>
-        <input type="text" class="form-control" id="address" placeholder="1234 Main St" [(ngModel)]="userDetail.address1"
+        <input type="text" class="form-control" id="address" placeholder="1234 Main St" [(ngModel)]="user.address" [disabled]="true"
           name="address1" required>
         <div class="invalid-feedback">
           Please enter your shipping address.
@@ -50,10 +50,12 @@
 
       <div class="row">
         <div class="col-md-5 mb-3">
-          <label for="country">Country</label>
+          <label for="country">Governement</label>
           <select class="custom-select d-block w-100" id="country" required [(ngModel)]="userDetail.country" name="country">
             <option value="">Choose...</option>
-            <option>United States</option>
+            <option>Assiut</option>
+            <option>Cairo</option>
+            <option>Suez</option>
           </select>
           <div class="invalid-feedback">
             Please select a valid country.

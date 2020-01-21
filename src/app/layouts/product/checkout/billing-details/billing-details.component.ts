@@ -7,6 +7,7 @@ import { AuthService } from '../../../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ProductF } from 'src/app/shared/models/productF';
+import { Order } from 'src/app/shared/models/order';
 
 @Component({
 	selector: 'app-billing-details',
@@ -17,11 +18,12 @@ export class BillingDetailsComponent implements OnInit {
 	userDetails: User;
 	products: ProductF[];
 	userDetail: UserDetail;
-
+  totalPrice: number;
+  order: Order;
 	constructor(
-		authService: AuthService,
+      private authService: AuthService,
 		private billingService: BillingService,
-		productService: ProductService,
+		private productService: ProductService,
 		private router: Router
 	) {
 		/* Hiding Shipping Tab Element */
@@ -35,29 +37,33 @@ export class BillingDetailsComponent implements OnInit {
 		this.userDetails = authService.getLoggedInUser();
 	}
 
-	ngOnInit() {}
+  ngOnInit() {
+    this.totalPrice = 0;
+    this.products = this.productService.getLocalCartProducts();
+    this.userDetails = this.authService.getLoggedInUser();
+    this.order = this.productService.getLocalOrder();
+
+    console.log("Start from Herer" + this.order.id);
+   
+    
+    this.products.forEach((product) => {
+
+      this.totalPrice += product.price * product.quantity;
+
+    });
+
+  }
 
 	updateUserDetails(form: NgForm) {
 		const data = form.value;
+ 
+	  
 
-		data['emailId'] = this.userDetails.email;
-		data['userId'] = this.userDetails.$key;
-		let totalPrice = 0;
-		const products = [];
-		this.products.forEach((product) => {
-			delete product['id'];
-			totalPrice += product.price;
-			products.push(product);
-		});
+	 
+     // this.productService.resetLocalCartProducts();
+     // this.billingService.createBillings(data, products);
 
-		data['products'] = products;
-
-		data['totalPrice'] = totalPrice;
-
-		data['billingDate'] = Date.now();
-
-	//	this.billingService.createBillings(data);
-
-		this.router.navigate([ 'checkouts', { outlets: { checkOutlet: [ 'result' ] } } ]);
+      this.router.navigate(['checkouts', { outlets: { checkOutlet: ['result'] } }]);
+     // this.productService.resetLocalCartProducts();
 	}
 }

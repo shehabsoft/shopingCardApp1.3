@@ -15,7 +15,7 @@
                 <a [routerLink]="['/products/product', product.id ]">
 
                   <div class="view overlay hm-white-slight">
-                    <img [src]="product.img_url" class="img-fluid" alt="" width="360px" height="640px">
+                    <img [src]="product.imgUrl" class="img-fluid" alt="" width="360px" height="640px">
                     <a>
                       <div class="mask waves-effect waves-light" mdbRippleRadius></div>
                     </a>
@@ -28,24 +28,45 @@
                 <div class="card-body text-center no-padding">
                   <!--Category & Title-->
                   <a class="text-muted">
-                    <h5>{{ product.name_ar }}</h5>
+                    <h5>{{ product.nameAr }}</h5>
                   </a>
                   <h5 class="card-title">
                     <strong>
-                      <a [routerLink]="['/products/product', product.id]">{{ product.name_en }}</a>
+                      <a [routerLink]="['/products/product', product.id]">{{ product.nameEn }}</a>
                     </strong>
                   </h5>
                   <!--Description-->
-                
-                    <div class="col-md-6 mb-6" style="margin-left:22%">
 
-                      <input type="number" name="quantity" class="form-control" [(ngModel)]="product.quantity" placeholder="1" (click)="updatequantity(product)"
-                             id="quantity" value="" required>
-                      <div class="invalid-feedback">
-                        Valid first name is required.
-                      </div>
+                  <div class="col-md-12 mb-6">
+
+                    <a class="text-muted">
+                      Qan
+                    </a>
+                    
+                    <input type="number" name="quantity" style="width:120%" class="form-control" [(ngModel)]="product.quantity" placeholder="1" (click)="updatequantity(product)"
+                           id="quantity" value="" required>
+                    <div class="invalid-feedback">
+                      Valid first name is required.
                     </div>
-                 
+
+
+                  </div>
+                  <div class="col-md-12 mb-6">
+
+                    <a class="text-muted">
+                      Cleaning
+                    </a>
+                      <select class="custom-select d-block w-100" style="width:120% !important" id="country" required name="country">
+                        <option value="">Choose...</option>
+                        <option>No</option>
+                        <option>Feleh</option>
+                        <option>Gezel</option>
+                      </select>
+
+
+</div>
+
+
                   <!--Card footer-->
                   <div class="card-footer">
 

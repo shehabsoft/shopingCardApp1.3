@@ -4,10 +4,11 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { Routes } from '@angular/router';
 import { IndexComponent } from '../../index/index.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-
+import { AuthGuard } from 'src/app/shared/services/auth_gaurd';
 export const ProductRoutes: Routes = [
 	{
-		path: 'products',
+    path: 'products',
+    canActivate: [AuthGuard],
 		children: [
 			{
 				path: '',

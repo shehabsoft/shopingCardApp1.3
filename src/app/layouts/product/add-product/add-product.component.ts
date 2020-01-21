@@ -39,12 +39,12 @@ export class AddProductComponent implements OnInit {
       console.log(productForm);
       const date = productForm.value['productAdded'];
       
-      this.data.name_ar = productForm.value.name_ar;
-      this.data.name_en = productForm.value.name_en;
+      this.data.nameAr = productForm.value.name_ar;
+      this.data.nameEn = productForm.value.name_en;
       this.data.price = productForm.value.price;
       this.data.details = productForm.value.details;
      // this.data.img_url =  productForm.value['img_url'];
-      this.data.img_url = '../../../assets/img/estakotha.png';
+      this.data.imgUrl = '../../../assets/img/estakotha.png';
       this.productService.createProduct1(this.data).subscribe(
         (hero) => {
           console.log(hero);
