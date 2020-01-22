@@ -18,7 +18,8 @@ import { ProductService } from "./product.service";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
+declare var $: any;
+declare var toastr: any;
 const apiUrl = "http://localhost:8090/Order/";
 @Injectable({
   providedIn: "root"
@@ -33,7 +34,7 @@ export class ShippingService {
     this.getshippings();
   }
 
-
+ 
 
   getshippings() {
     this.shippings = this.db.list("shippings");
@@ -96,6 +97,7 @@ export class ShippingService {
       tap(hero => {
         this.createdOrder = hero;
         console.log(hero);
+        toastr.success('Order ' + hero.id + ' : is Pending Confirmation', 'Order Creation');
 
 
       }

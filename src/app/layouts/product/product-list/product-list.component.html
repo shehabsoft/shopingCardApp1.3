@@ -18,9 +18,9 @@
         </select>
       </div>
       <ul class="list-group">
-        <li class="list-group-item">SUEZ</li>
-        <li class="list-group-item">SUEZ CANAL </li>
-        <li class="list-group-item">ASWAN</li>
+        <li class="list-group-item">FISH</li>
+        <li class="list-group-item">CAR </li>
+ 
       </ul>
     </div>
     <div class="col-md-9">
@@ -34,9 +34,9 @@
                 <!--Card-->
                 <div class="card card-cascade wider">
                   <!--Card image-->
-                  <a [routerLink]="['/products/product', product.id]">
+                  <a [routerLink]="['/products/product', product.product.id]">
                     <div class="view overlay hm-white-slight">
-                      <img [src]="product.imgUrl" class="img-fluid" alt="" width="360px" height="640px">
+                      <img [src]="product.product.imgUrl" class="img-fluid" alt="" width="360px" height="640px">
                       <a>
                         <div class="mask waves-effect waves-light" mdbRippleRadius></div>
                       </a>
@@ -47,29 +47,29 @@
                   <div class="card-body text-center no-padding">
                     <!--Category & Title-->
                     <a class="text-muted">
-                      <h5>{{ product.nameAr }}</h5>
+                      <h5>{{ product.product.nameAr }}</h5>
                     </a>
                     <p class="card-title">
                       <strong>
                         <a [routerLink]="['/products/product', product.id]" routerLinkActive="router-link-active">
                           {{
-                          product.nameAr
+                          product.product.nameAr
                           }}
                         </a>
                       </strong>
                     </p>
                     <!--Description-->
                     <p class="card-text">
-                      {{ product.nameEn }}
+                      {{ product.user.name }}
                     </p>
                     <!--Card footer-->
                     <div class="card-footer">
-                      <span class="left">EGP {{ product.price }}</span>
+                      <span class="left">EGP {{ product.product.price }}</span>
                       <span class="right">
-                        <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addFavourite(product)">
+                        <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addFavourite(product.product)">
                           <i class="fa fa-heart"></i>
                         </a>
-                        <a placement="top" mdbTooltip="Add to Cart" container="body" (click)="addToCart(product)">
+                        <a placement="top" mdbTooltip="Add to Cart" container="body" (click)="addToCart(product.product)">
                           <i class="fa fa-shopping-cart"></i>
                         </a>
                         <!-- <a placement="top" mdbTooltip="Remove Product" container="body" *ngIf="authService.isAdmin()"
@@ -78,7 +78,7 @@
      </a>
         -->
                         <a placement="top" mdbTooltip="Remove Product" container="body"  
-                           (click)="removeProduct(product.id)">
+                           (click)="removeProduct(product.product.id)">
                           <i class="fa fa-trash"></i>
                         </a>
                       </span>

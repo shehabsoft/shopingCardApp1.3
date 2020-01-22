@@ -1,6 +1,11 @@
 <div class="mt-5 mb-5" id="receipt">
-  <a name="" style="position: relative; float: right" id="" class="btn btn-primary" href="javascript:;;" role="button"
-    (click)="downloadReceipt()"><i class="fa fa-download"></i> Receipt</a>
+  <a name="" style="position: relative; float: right" id="" class="btn btn-primary btn-lg btn-block" href="javascript:;;" role="button"
+     (click)="downloadReceipt()"><i class="fa fa-download"></i>Receipt</a>
+  <img style="position: relative; float: right" id="source" src="../../../../../../assets/img/logo.png" width="300" height="227">
+
+
+
+
 
   <div class="row">
     <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3" style="margin: auto">
@@ -14,6 +19,7 @@
             <abbr title="Phone">P:</abbr> (+02) 01015557920
           </address>
         </div>
+
         <div class="col-xs-6 col-sm-6 col-md-6 text-right">
           <p>
             <em>Date: {{date | date}}</em>
@@ -40,7 +46,7 @@
           <tbody>
             <tr *ngFor="let product of products">
               <td class="col-md-9">
-                <h6><em>{{product.name_ar}}</em></h6>
+                <h6><em>{{product.nameAr}}</em></h6>
               </td>
               <td></td>
               <td class="col-md-1 text-center">EGP {{product.price}}</td>
@@ -79,10 +85,17 @@
             </tr>
           </tbody>
         </table>
-        <button class="btn btn-primary btn-lg btn-block" type="button" (click)="completeOrder()">
-          Continue to Receipt
-              <span class="glyphicon glyphicon-chevron-right"></span>
-        </button>
+        <table>
+          <tr><td style="width:100%"> <h6> <mark>Order pending Confirmation</mark></h6></td>
+            <td>
+              <button  class="btn btn-success btn-lg btn-block" type="button" (click)="completeOrder()">
+                Confirm Order
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </button>
+            </td>
+            <td></td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>

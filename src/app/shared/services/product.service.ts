@@ -9,14 +9,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductF } from '../models/productF';
 import { EventEmitter } from 'events';
 import { Order } from '../models/order';
+import { ProductsSeller } from '../models/productsSeller';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 const apiUrl = "http://localhost:8090/Product/";
 @Injectable()
 export class ProductService {
-  productsObs: Observable<ProductF[]>;
-  products: ProductF[];
+  productsObs: Observable<ProductsSeller[]>;
+  products: ProductsSeller[];
   product: ProductF = new ProductF;
  
 	// favouriteProducts
@@ -39,8 +40,8 @@ export class ProductService {
       this.calculateLocalFavProdCounts();
       this.calculateLocalCartProdCounts();
 	}
-  getProducts1(): Observable<ProductF[]> {
-    return this.http.get<ProductF[]>(apiUrl, httpOptions).pipe(
+  getProducts1(): Observable<ProductsSeller[]> {
+    return this.http.get<ProductsSeller[]>(apiUrl, httpOptions).pipe(
       tap(heroes => console.log(heroes))
       
 
@@ -48,7 +49,7 @@ export class ProductService {
   }
 
  
-  getProducts(): Observable<ProductF[]> {
+  getProducts(): Observable<ProductsSeller[]> {
 		////this.products = this.db.list('products');
       // return this.products;
     this.productsObs = this.getProducts1();

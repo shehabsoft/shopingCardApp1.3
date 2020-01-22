@@ -9,4 +9,5 @@ export class ProductF {
   updated_at: Date;
   imgUrl: string;
   img_data: Blob;
+  category: string;
 }

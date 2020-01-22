@@ -70,6 +70,7 @@ export class ShippingDetailsComponent implements OnInit {
 
 
       this.shippingService.createshippings(this.billing, this.products).subscribe((response) => {
+      
         this.productService.setLocalOrder(response);
         this.router.navigate(['checkouts', { outlets: { checkOutlet: ['billing-details'] } }]);
 

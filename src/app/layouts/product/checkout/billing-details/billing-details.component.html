@@ -3,9 +3,9 @@
     <h4 class="mb-3">Thanks you !</h4>
     <form class="needs-validation" #userDetailsForm="ngForm" (ngSubmit)="updateUserDetails(userDetailsForm)">
       <div class="row">
-        <div class="col-md-6 mb-3">
-          Your Order number is:<span class="text-muted" style="font-size:large"> {{order.id}} </span> total Price is :<span class="text-muted" style="font-size:large"> {{totalPrice}} EGP</span>
-</div>
+        <div class="col-md-12 mb-6">
+          Your Order number is:<span class="text-muted" style="font-size:large"> {{order.id}} </span>with  Price is :<span class="text-muted" style="font-size:large"> {{totalPrice}} EGP</span> is  <mark>pending Confirmation</mark>
+        </div>
         
       </div>
       <div class="mb-3">

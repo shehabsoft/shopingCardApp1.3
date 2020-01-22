@@ -5,6 +5,7 @@ import { ProductService } from '../../../shared/services/product.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { ProductF } from 'src/app/shared/models/productF';
 import { Observable } from 'rxjs';
+import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 declare var toastr: any;
 @Component({
 	selector: 'app-product-list',
@@ -13,9 +14,9 @@ declare var toastr: any;
 })
 
 export class ProductListComponent implements OnInit{
-	productList: ProductF[];
+	productList: ProductsSeller[];
 	loading = false;
-	brands = ['All', 'SUEZS', 'CANAL', 'ASSIUT', 'Nokia', 'Motorolla'];
+	brands = ['All', 'FISH', 'CAR','MEAT'];
    imageUrl;
 	selectedBrand: 'All';
 

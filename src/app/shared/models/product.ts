@@ -20,4 +20,5 @@ export class Product {
   id: number;
   imgUrl: string;
   img_data: Blob;
+  category: string;
 }
