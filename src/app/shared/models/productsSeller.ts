@@ -1,5 +1,6 @@
 import { ProductF } from "./productF";
-import { User } from "firebase";
+import { User } from "./user";
+ 
 
 export class ProductsSeller {
  

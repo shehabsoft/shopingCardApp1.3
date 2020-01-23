@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { ProductService } from '../../../../shared/services/product.service';
 import { ProductF } from 'src/app/shared/models/productF';
 import { Billing } from 'src/app/shared/models/billing';
+import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 @Component({
 	selector: 'app-shipping-details',
 	templateUrl: './shipping-details.component.html',
@@ -18,7 +19,7 @@ export class ShippingDetailsComponent implements OnInit {
 
 	userDetail: UserDetail;
 
-	products: ProductF[];
+	productsSeller: ProductsSeller[];
 
 	constructor(
 		authService: AuthService,
@@ -33,7 +34,7 @@ export class ShippingDetailsComponent implements OnInit {
 		document.getElementById('resultTab').style.display = 'none';
       this.userDetail = new UserDetail;
 	
-      this.products = productService.getLocalCartProducts();
+      this.productsSeller = productService.getLocalCartProducts();
 
       this.user = authService.getLoggedInUser();
     
@@ -50,10 +51,10 @@ export class ShippingDetailsComponent implements OnInit {
 
 		let totalPrice = 0;
 
-		this.products.forEach((product) => {
+      this.productsSeller.forEach((productSeller) => {
 		//	delete product['id'];
-			totalPrice += product.price;
-			products.push(product);
+        totalPrice += productSeller.product.price;
+        products.push(productSeller);
 		});
 
 		data['products'] = products;
@@ -69,7 +70,7 @@ export class ShippingDetailsComponent implements OnInit {
       console.log(this.user);
 
 
-      this.shippingService.createshippings(this.billing, this.products).subscribe((response) => {
+      this.shippingService.createshippings(this.billing, this.productsSeller).subscribe((response) => {
       
         this.productService.setLocalOrder(response);
         this.router.navigate(['checkouts', { outlets: { checkOutlet: ['billing-details'] } }]);

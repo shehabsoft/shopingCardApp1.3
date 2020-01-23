@@ -10,6 +10,7 @@ import { UserRoutes } from "./user.routing";
 import { UserComponent } from "./user.component";
 import { UserAccountComponent } from "./user-account/user-account.component";
 import { SharedModule } from "src/app/shared/shared.module";
+ 
 
 @NgModule({
 	imports: [CommonModule, SharedModule, RouterModule.forChild(UserRoutes)],

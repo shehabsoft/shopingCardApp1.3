@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ProductF } from 'src/app/shared/models/productF';
 import { Order } from 'src/app/shared/models/order';
+import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 
 @Component({
 	selector: 'app-billing-details',
@@ -16,7 +17,7 @@ import { Order } from 'src/app/shared/models/order';
 })
 export class BillingDetailsComponent implements OnInit {
 	userDetails: User;
-	products: ProductF[];
+	products: ProductsSeller[];
 	userDetail: UserDetail;
   totalPrice: number;
   order: Order;
@@ -46,9 +47,9 @@ export class BillingDetailsComponent implements OnInit {
     console.log("Start from Herer" + this.order.id);
    
     
-    this.products.forEach((product) => {
+    this.products.forEach((productSeller) => {
 
-      this.totalPrice += product.price * product.quantity;
+      this.totalPrice += productSeller.product.price * productSeller.product.quantity;
 
     });
 

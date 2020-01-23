@@ -51,7 +51,7 @@
                     </a>
                     <p class="card-title">
                       <strong>
-                        <a [routerLink]="['/products/product', product.id]" routerLinkActive="router-link-active">
+                        <a [routerLink]="['/products/product', product.product.id]" routerLinkActive="router-link-active">
                           {{
                           product.product.nameAr
                           }}
@@ -60,7 +60,7 @@
                     </p>
                     <!--Description-->
                     <p class="card-text">
-                      {{ product.user.name }}
+                      {{ product.product.category }}
                     </p>
                     <!--Card footer-->
                     <div class="card-footer">
@@ -69,14 +69,14 @@
                         <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addFavourite(product.product)">
                           <i class="fa fa-heart"></i>
                         </a>
-                        <a placement="top" mdbTooltip="Add to Cart" container="body" (click)="addToCart(product.product)">
+                        <a placement="top" mdbTooltip="Add to Cart" container="body" (click)="addToCart(product)">
                           <i class="fa fa-shopping-cart"></i>
                         </a>
-                        <!-- <a placement="top" mdbTooltip="Remove Product" container="body" *ngIf="authService.isAdmin()"
+                         <a placement="top" mdbTooltip="Remove Product" container="body" *ngIf="authService.isAdmin()"
         (click)="removeProduct(product.id)">
        <i class="fa fa-trash"></i>
      </a>
-        -->
+        
                         <a placement="top" mdbTooltip="Remove Product" container="body"  
                            (click)="removeProduct(product.product.id)">
                           <i class="fa fa-trash"></i>

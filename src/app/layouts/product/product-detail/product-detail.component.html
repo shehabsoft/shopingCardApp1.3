@@ -18,7 +18,10 @@
               <div>
                 <h6 class="my-0">Product Seller</h6>
               </div>
-              <span class="text-muted" style="color:crimson !important">{{product.user.name}}</span>
+              <span class="text-muted" style="color:crimson !important">
+                  <a [routerLink]="['/users/user', productSeller.user.id]"> {{productSeller.user.name}}</a> 
+
+              </span>
             </li>
           </ul>
           <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../shared/services/product.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { ProductF } from 'src/app/shared/models/productF';
+import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 @Component({
 	selector: 'app-product-detail',
 	templateUrl: './product-detail.component.html',
@@ -11,8 +12,8 @@ import { ProductF } from 'src/app/shared/models/productF';
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
 	private sub: any;
-	product: ProductF;
-
+  product: ProductF;
+  productSeller: ProductsSeller;
 	constructor(
 		private route: ActivatedRoute,
 		private productService: ProductService,
@@ -22,10 +23,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
-		this.sub = this.route.params.subscribe((params) => {
+      this.sub = this.route.params.subscribe((params) => {
           const id = params['id']; // (+) converts string 'id' to a number
           console.log("get produt Details with ID " + id);
-			this.getProductDetail(id);
+          this.productSeller = this.productService.getLocalProductById(id);
+     
+          this.product = this.productSeller.product;
 		});
 	}
 
@@ -40,7 +43,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 		 
 	}
 
-	addToCart(product: ProductF) {
+	addToCart(product: ProductsSeller) {
 		this.productService.addToCart(product);
 	}
 

@@ -15,6 +15,7 @@ import { OrdersProducts } from "../models/ordersProducts";
 import { User } from "../models/user";
 import { Country } from "../models/country";
 import { ProductService } from "./product.service";
+import { ProductsSeller } from "../models/productsSeller";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -55,7 +56,7 @@ export class ShippingService {
   ordersProducts: OrdersProducts[];
   ordersProduct: OrdersProducts;
   arr: ProductF[] = [];
-  createshippings(data: Billing, productList: ProductF[]): Observable<Order>{
+  createshippings(data: Billing, productList: ProductsSeller[]): Observable<Order>{
    
     this.order = new Order;
     this.country = new Country;
@@ -70,12 +71,12 @@ export class ShippingService {
     this.order.zip = data.userDetails.zip;
     this.ordersProducts = [];
     let total = 0;
-    productList.forEach((product: ProductF) => {
-      console.log(product);
-      total += (product.price * product.quantity);
+    productList.forEach((productseller: ProductsSeller) => {
+      console.log(productseller);
+      total += (productseller.product.price * productseller.product.quantity);
       this.ordersProduct = new OrdersProducts;
-      this.ordersProduct.product = product;
-      this.ordersProduct.quantity = product.quantity;
+      this.ordersProduct.product = productseller.product;
+      this.ordersProduct.quantity = productseller.product.quantity;
      
       this.ordersProducts.push(this.ordersProduct);
      }

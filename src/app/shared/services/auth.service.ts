@@ -60,6 +60,22 @@ export class AuthService {
   
     
   }
+  getSellerAccountById(id: number): Observable<User> {
+    console.log("calling Backend getSellerAccountById ");
+    const url = userApiUrl + id;
+    let user: User;
+    user.id = id;
+    return this.http.post<User>(url, user, httpOptions).pipe(
+      tap(herso => {
+        console.log(herso);
+        this.userLogin = herso
+      },
+        err => console.log(err))
+
+
+
+    );
+  }
   isLoggedIn(): boolean {
     if (this.userLogin !== null && this.userLogin.id !== null)//&& typeof(this.userLogin.email ) != "undefined"
     {

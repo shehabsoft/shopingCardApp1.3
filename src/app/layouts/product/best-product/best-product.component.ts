@@ -4,6 +4,7 @@ import { Product } from 'src/app/shared/models/product';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { ProductF } from 'src/app/shared/models/productF';
+import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 
 @Component({
 	selector: 'app-best-product',
@@ -11,7 +12,7 @@ import { ProductF } from 'src/app/shared/models/productF';
 	styleUrls: [ './best-product.component.scss' ]
 })
 export class BestProductComponent implements OnInit {
-	bestProducts: ProductF[] = [];
+	bestProducts: ProductsSeller[] = [];
 	options: any;
 	loading = false;
 	constructor(
@@ -48,7 +49,7 @@ export class BestProductComponent implements OnInit {
             for (let i = 0; i < product.length; i++) {
                   const y = product[i];
 					y['id'] = product[i].id;
-					this.bestProducts.push(y as ProductF);
+					this.bestProducts.push(y as ProductsSeller);
 				}
 				// product.forEach(element => {
 				//   const y = element.payload.toJSON();

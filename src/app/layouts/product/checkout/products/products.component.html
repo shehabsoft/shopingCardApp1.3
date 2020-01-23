@@ -2,14 +2,14 @@
     <ul class="list-group mb-3">
       <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of checkoutProducts">
         <div>
-          <img [src]="product.imgUrl" [alt]="product.nameEn" width="150" height="100">
+          <img [src]="product.product.imgUrl" [alt]="ddd" width="150" height="100">
         </div>
         <div style="padding: 10px">
-          <h6 class=" my-0 ">{{product.nameAr}}</h6>
-          <p>Product Seller : {{product.nameEn}} </p>
-          <span class="text-muted ">quantity ({{product.quantity}}) Total  {{product.price*product.quantity}} EGP</span>
+          <h6 class=" my-0 ">{{product.product.nameAr}}</h6>
+          <p>Product Seller : {{product.user.name}} </p>
+          <span class="text-muted ">quantity ({{product.product.quantity}}) Total  {{product.product.price*product.product.quantity}} EGP</span>
         </div>
-        <span class="text-muted ">Unit Price   {{product.price}} EGP</span>
+        <span class="text-muted ">Unit Price   {{product.product.price}} EGP</span>
      
       </li>
         <hr>

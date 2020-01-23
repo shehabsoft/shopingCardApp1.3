@@ -15,7 +15,7 @@
                 <a [routerLink]="['/products/product', product.id ]">
 
                   <div class="view overlay hm-white-slight">
-                    <img [src]="product.imgUrl" class="img-fluid" alt="" width="360px" height="640px">
+                    <img [src]="product.product.imgUrl" class="img-fluid" alt="" width="360px" height="640px">
                     <a>
                       <div class="mask waves-effect waves-light" mdbRippleRadius></div>
                     </a>
@@ -28,11 +28,11 @@
                 <div class="card-body text-center no-padding">
                   <!--Category & Title-->
                   <a class="text-muted">
-                    <h5>{{ product.nameAr }}</h5>
+                    <h5>{{  product.product.nameAr }}</h5>
                   </a>
                   <h5 class="card-title">
                     <strong>
-                      <a [routerLink]="['/products/product', product.id]">{{ product.nameEn }}</a>
+                      <a [routerLink]="['/products/product',  product.product.id]">{{ product.nameEn }}</a>
                     </strong>
                   </h5>
                   <!--Description-->
@@ -43,7 +43,7 @@
                       Qan
                     </a>
                     
-                    <input type="number" name="quantity" style="width:120%" class="form-control" [(ngModel)]="product.quantity" placeholder="1" (click)="updatequantity(product)"
+                    <input type="number" name="quantity" style="width:120%" class="form-control" [(ngModel)]=" product.product.quantity" placeholder="1" (click)="updatequantity(product.product)"
                            id="quantity" value="" required>
                     <div class="invalid-feedback">
                       Valid first name is required.
@@ -70,12 +70,12 @@
                   <!--Card footer-->
                   <div class="card-footer">
 
-                    <span class="left">EGP {{ product.price }}</span>
+                    <span class="left">EGP {{  product.product.price }}</span>
                     <span class="right">
-                      <a placement="top" mdbTooltip="Quick Look" container="body" [routerLink]="['/products/product', product.id]">
+                      <a placement="top" mdbTooltip="Quick Look" container="body" [routerLink]="['/products/product',  product.product.id]">
                         <i class="fa fa-eye"></i>
                       </a>
-                      <a placement="top" mdbTooltip="Remove Product" container="body" (click)="removeCartProduct(product)">
+                      <a placement="top" mdbTooltip="Remove Product" container="body" (click)="removeCartProduct( product.product)">
                         <i class="fa fa-trash"></i>
                       </a>
                     </span>

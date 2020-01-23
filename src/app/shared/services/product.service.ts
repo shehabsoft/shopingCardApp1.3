@@ -60,7 +60,19 @@ export class ProductService {
         
       return this.productsObs;
   }
- 
+  getLocalProductById(id:number): ProductsSeller {
+    let productSellerList: ProductsSeller[];
+    let productSerller: ProductsSeller;
+    productSellerList = JSON.parse(localStorage.getItem('item_list'));
+    for (let i = 0; i < productSellerList.length; i++) {
+      if (productSellerList[i].product.id == id) {
+        productSerller = productSellerList[i];
+        break;
+      }
+    }
+
+    return productSerller;
+  }
 
   createProduct1(data: ProductF): Observable<ProductF> {
     console.log("Before Creation")
@@ -179,17 +191,15 @@ export class ProductService {
   */
 
 	// Adding new Product to cart db if logged in else localStorage
-	addToCart(data: ProductF): void {
-      let a: ProductF[];
-      data.quantity = 1;
+	addToCart(data: ProductsSeller): void {
+      let a: ProductsSeller[];
+      data.product.quantity = 1;
       if (localStorage.getItem('avct_item') === "undefined") {
 
         a = [];
       } else {
         a = JSON.parse(localStorage.getItem('avct_item')) 
       }
-   
-
       a.push(data);
       console.log("Cart Items " + data.id);
 		this.toastrService.wait('Adding Product to Cart', 'Product Adding to the cart');
@@ -201,10 +211,10 @@ export class ProductService {
 
 	// Removing cart from local
 	removeLocalCartProduct(product: Product) {
-		const products: Product[] = JSON.parse(localStorage.getItem('avct_item'));
+      const products: ProductsSeller[] = JSON.parse(localStorage.getItem('avct_item'));
 
 		for (let i = 0; i < products.length; i++) {
-			if (products[i].productId === product.productId) {
+			if (products[i].product.id === product.productId) {
 				products.splice(i, 1);
 				break;
 			}
@@ -215,13 +225,13 @@ export class ProductService {
 		this.calculateLocalCartProdCounts();
 	}
   resetLocalCartProducts() {
-    let products1: ProductF[];
+    let products1: ProductsSeller[];
     localStorage.setItem('avct_item', JSON.stringify(products1));
     this.calculateLocalCartProdCounts();
   }
 	// Fetching Locat CartsProducts
-  getLocalCartProducts(): ProductF[] {
-    let products1: ProductF[];
+  getLocalCartProducts(): ProductsSeller[] {
+    let products1: ProductsSeller[];
     if (localStorage.getItem('avct_item') === "undefined") {
 
       products1 = [];
@@ -256,8 +266,8 @@ export class ProductService {
   updateQuantityOnLocalStorage(product: ProductF) {
     const products = this.getLocalCartProducts();
     for (let i = 0; i < products.length; i++) {
-      if (product.id === products[i].id) {
-        products[i].quantity = product.quantity;
+      if (product.id === products[i].product.id) {
+        products[i].product.quantity = product.quantity;
       }
     }
     localStorage.setItem('avct_item', JSON.stringify(products));

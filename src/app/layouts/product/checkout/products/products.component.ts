@@ -2,6 +2,7 @@ import { ProductService } from '../../../../shared/services/product.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Product } from '../../../../shared/models/product';
 import { ProductF } from 'src/app/shared/models/productF';
+import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 
 @Component({
 	selector: 'app-products',
@@ -9,7 +10,7 @@ import { ProductF } from 'src/app/shared/models/productF';
 	styleUrls: [ './products.component.scss' ]
 })
 export class ProductsComponent implements OnInit {
-	checkoutProducts: ProductF[];
+	checkoutProducts: ProductsSeller[];
 
 	totalPrice = 0;
 	constructor(productService: ProductService) {
@@ -21,8 +22,8 @@ export class ProductsComponent implements OnInit {
 
 		this.checkoutProducts = products;
 
-      products.forEach((product) => {
-        this.totalPrice += product.price * product.quantity;
+      products.forEach((productSeller) => {
+        this.totalPrice += productSeller.product.price * productSeller.product.quantity;
 		});
 	}
 

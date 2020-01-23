@@ -80,7 +80,7 @@ export class ProductListComponent implements OnInit{
 		this.productService.addFavouriteProduct(product);
 	}
 
-	addToCart(product: ProductF) {
+	addToCart(product: ProductsSeller) {
 		this.productService.addToCart(product);
 	}
 }

@@ -7,6 +7,7 @@ import { ProductF } from 'src/app/shared/models/productF';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/shared/models/order';
 import { Observable } from 'rxjs';
+import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 declare var $: any;
 declare var toastr: any;
 @Component({
@@ -15,7 +16,7 @@ declare var toastr: any;
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-  products: ProductF[];
+  products: ProductsSeller[];
   date: number;
   totalPrice = 0;
   tax = 30;
@@ -30,8 +31,8 @@ export class ResultComponent implements OnInit {
 
     this.products = productService.getLocalCartProducts();
 
-    this.products.forEach((product) => {
-      this.totalPrice += product.price * product.quantity;
+    this.products.forEach((productSeller) => {
+      this.totalPrice += productSeller.product.price * productSeller.product.quantity;
     });
 
     this.date = Date.now();

@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../shared/models/product';
 import { ProductService } from '../../../shared/services/product.service';
 import { ProductF } from 'src/app/shared/models/productF';
+import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 @Component({
 	selector: 'app-cart-products',
 	templateUrl: './cart-products.component.html',
 	styleUrls: [ './cart-products.component.scss' ]
 })
 export class CartProductsComponent implements OnInit {
-	cartProducts: ProductF[];
+	cartProducts: ProductsSeller[];
 	showDataNotFound = true;
 
 	// Not Found Message
@@ -17,7 +18,8 @@ export class CartProductsComponent implements OnInit {
 
 	constructor(private productService: ProductService) {}
 
-	ngOnInit() {
+  ngOnInit() {
+
 		this.getCartProduct();
 	}
 
