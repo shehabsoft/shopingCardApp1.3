@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { Order } from 'src/app/shared/models/order';
 import { Observable } from 'rxjs';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
+import { BillingService } from 'src/app/shared/services/billing.service';
 declare var $: any;
 declare var toastr: any;
 @Component({
@@ -22,7 +23,7 @@ export class ResultComponent implements OnInit {
   tax = 30;
   order: Order;
   orderObservable: Observable<Order>;
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private billingService: BillingService, private router: Router) {
     /* Hiding Billing Tab Element */
     document.getElementById('productsTab').style.display = 'none';
     document.getElementById('shippingTab').style.display = 'none';
@@ -31,9 +32,19 @@ export class ResultComponent implements OnInit {
 
     this.products = productService.getLocalCartProducts();
 
-    this.products.forEach((productSeller) => {
-      this.totalPrice += productSeller.product.price * productSeller.product.quantity;
+    let total = 0;
+    let totalPacakging = 0;
+    let totalCleaning = 0;
+
+    this.products.forEach((productseller: ProductsSeller) => {
+      console.log(productseller);
+      totalPacakging += 5 * productseller.product.quantity;
+      total += (productseller.product.price * productseller.product.quantity);
+      totalCleaning += productseller.product.cleaningFee.feeAmount * productseller.product.quantity;
+
+
     });
+    this.totalPrice += total + totalCleaning + totalPacakging;
 
     this.date = Date.now();
   }
@@ -43,9 +54,14 @@ export class ResultComponent implements OnInit {
 
     console.log("begin observable");
     this.order = this.productService.getLocalOrder();
-    toastr.success('Order ' + this.order.id + ' : is Confirmed successfully', 'Order Creation');
-    this.productService.resetLocalCartProducts();
-    this.router.navigate(['products/all-products']);
+    this.billingService.confirmOrder(this.order).subscribe(response => {
+
+      toastr.success('Order ' + this.order.id + ' : is Confirmed successfully', 'Order Creation');
+
+      this.productService.resetLocalCartProducts();
+
+      this.router.navigate(['products/all-products']);
+    }, err => console.log(err));
  
 
 

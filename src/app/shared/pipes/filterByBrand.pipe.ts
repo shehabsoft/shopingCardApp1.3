@@ -6,7 +6,7 @@ import { ProductsSeller } from "../models/productsSeller";
 })
 export class FilterByBrandPipe implements PipeTransform {
   transform(items: ProductsSeller[], select?: any): any {
-    console.log("Item s " + items[0].product);
+  //  console.log("Item s " + items[0].product);
     console.log("Filter Selected: " + select);
     if (select !== "All") {
       return select

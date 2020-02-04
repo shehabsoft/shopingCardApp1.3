@@ -1,3 +1,5 @@
+import { CleaningFee } from "./cleaningFee";
+
 export class ProductF {
   $key: string;
   id: number;
@@ -10,4 +12,5 @@ export class ProductF {
   imgUrl: string;
   img_data: Blob;
   category: string;
+  cleaningFee: CleaningFee;
 }

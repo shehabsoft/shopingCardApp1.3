@@ -46,12 +46,12 @@
           <tbody>
             <tr *ngFor="let product of products">
               <td class="col-md-9">
-                <h6><em>{{product.nameAr}}</em></h6>
+                <h6><em>{{product.product.nameAr}}</em></h6>
               </td>
               <td></td>
-              <td class="col-md-1 text-center">EGP {{product.price}}</td>
-              <td class="col-md-1 text-center">  {{product.quantity}}</td>
-              <td class="col-md-1 text-center">EGP {{product.price*product.quantity}}</td>
+              <td class="col-md-1 text-center">EGP {{product.product.price}}</td>
+              <td class="col-md-1 text-center">  {{product.product.quantity}}</td>
+              <td class="col-md-1 text-center">EGP {{product.product.price*product.product.quantity}}</td>
             </tr>
             <tr>
               <td>   </td>

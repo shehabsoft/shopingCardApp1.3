@@ -1,4 +1,5 @@
 import { ProductF } from "./productF";
+import { CleaningFee } from "./cleaningFee";
 
 export class OrdersProducts {
   
@@ -10,5 +11,9 @@ export class OrdersProducts {
   creationDate: Date;
 
   product: ProductF;
+
+  cleaningFee: CleaningFee;
+
+  cleaningFeeId: number;
  
 }

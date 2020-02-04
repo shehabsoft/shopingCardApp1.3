@@ -1,24 +1,33 @@
 <div class="container">
-    <ul class="list-group mb-3">
-      <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of checkoutProducts">
-        <div>
-          <img [src]="product.product.imgUrl" [alt]="ddd" width="150" height="100">
-        </div>
-        <div style="padding: 10px">
-          <h6 class=" my-0 ">{{product.product.nameAr}}</h6>
-          <p>Product Seller : {{product.user.name}} </p>
-          <span class="text-muted ">quantity ({{product.product.quantity}}) Total  {{product.product.price*product.product.quantity}} EGP</span>
-        </div>
-        <span class="text-muted ">Unit Price   {{product.product.price}} EGP</span>
-     
-      </li>
-        <hr>
-        <li class="list-group-item d-flex justify-content-between ">
-            <span>Total (EGP)</span>
-            <strong>EGP {{totalPrice}}</strong>
-        </li>
+  <ul class="list-group mb-3">
+    <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of checkoutProducts">
+      <div>
+        <img [src]="product.product.imgUrl" [alt]="ddd" width="150" height="100">
+      </div>
+      <div style="padding: 10px">
+        <h6 class=" my-0 ">{{product.product.nameAr}}</h6>
+        <p>Product Seller : {{product.user.name}} </p>
+        <span class="text-muted ">quantity ({{product.product.quantity}}) Total  {{product.product.price*product.product.quantity}} EGP</span>
+      </div>
+      <span class="text-muted ">Unit Price   {{product.product.price}} EGP</span>
+      <span class="text-muted ">Cleaning   {{product.product.cleaningFee.feesNameAr}} {{product.product.cleaningFee.feeAmount}} EGP </span>
 
-    </ul>
+    </li>
+    <hr>
+    <li class="list-group-item d-flex justify-content-between ">
+      <span>Cleaning (EGP)</span>
+      <strong>EGP {{totalCleaning}}</strong>
+    </li>
+    <li class="list-group-item d-flex justify-content-between ">
+      <span>Packaging (EGP)</span>
+      <strong>EGP {{ totalPacakging}}</strong>
+    </li>
+    <li class="list-group-item d-flex justify-content-between ">
+      <span>Total (EGP)</span>
+      <strong>EGP {{totalPrice}}</strong>
+    </li>
+
+  </ul>
     <div class="float-right">
         <a class="btn btn-default " [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['shipping-details']}}]" routerLinkActive="active">Next</a>
     </div>

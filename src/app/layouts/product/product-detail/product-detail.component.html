@@ -4,7 +4,7 @@
     <div class="col-sm-4">
       <div class="product-image">
         <div class="view hm-zoom z-depth-2" style="cursor: pointer">
-          <img [src]="product.imgUrl"  [alt]="product.name_ar" width="100%" class="img-fluid rounded">
+          <img [src]="product.imgUrl"  [alt]="product.nameAr" width="100%" class="img-fluid rounded">
         </div>
         <div class="" style="margin-top:15px">
           <ul class="list-group mb-3">
@@ -19,7 +19,9 @@
                 <h6 class="my-0">Product Seller</h6>
               </div>
               <span class="text-muted" style="color:crimson !important">
-                  <a [routerLink]="['/users/user', productSeller.user.id]"> {{productSeller.user.name}}</a> 
+           
+                 
+                  <a [routerLink]="['/users/user', productSeller.user.id]" > {{productSeller.user.name}}</a>
 
               </span>
             </li>

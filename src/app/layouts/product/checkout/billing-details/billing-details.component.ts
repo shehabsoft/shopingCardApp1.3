@@ -45,15 +45,21 @@ export class BillingDetailsComponent implements OnInit {
     this.order = this.productService.getLocalOrder();
 
     console.log("Start from Herer" + this.order.id);
-   
-    
-    this.products.forEach((productSeller) => {
 
-      this.totalPrice += productSeller.product.price * productSeller.product.quantity;
+    let total = 0;
+    let totalPacakging = 0;
+    let totalCleaning = 0;
+
+    this.products.forEach((productseller: ProductsSeller) => {
+      console.log(productseller);
+      totalPacakging += 5 * productseller.product.quantity;
+      total += (productseller.product.price * productseller.product.quantity);
+      totalCleaning += productseller.product.cleaningFee.feeAmount * productseller.product.quantity;
+
 
     });
-
-  }
+    this.totalPrice += total + totalCleaning + totalPacakging;
+      }
 
 	updateUserDetails(form: NgForm) {
 		const data = form.value;

@@ -1,0 +1,27 @@
+<form>
+  <div class="row">
+    <img [src]="loggedUser.avatar" *ngIf="loggedUser.avatar" [alt]="loggedUser.userName" style="width: 35%; height: 35%;">
+    <img src="../../../assets/img/malecostume-512.jpg" *ngIf="!loggedUser.avatar" [alt]="loggedUser.userName" style="width: 35%; height: 35%;">
+    <div class="col-md-8 mt-3">
+      <label for="userName">User Name</label>
+      <p style="font-size: 15px;">{{loggedUser.name}}</p>
+    </div>
+    <div class="col-md-8 mb-3">
+      <label for="emailId">Email Id</label>
+      <p style="font-size: 15px;">{{loggedUser.email}}</p>
+    </div>
+    <div class="col-md-8 mb-3">
+      <label for="emailId">Mobile Number</label>
+      <p style="font-size: 15px;">{{loggedUser.mobileNumber}}</p>
+    </div>
+
+    <div class="col-md-8 mb-3">
+      <label for="emailId">Address</label>
+      <p style="font-size: 15px;">{{loggedUser.address}}</p>
+    </div>
+
+  </div>
+</form>
+<p>
+  seller-account works!
+</p>

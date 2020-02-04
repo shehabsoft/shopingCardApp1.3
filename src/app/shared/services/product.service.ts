@@ -10,10 +10,12 @@ import { ProductF } from '../models/productF';
 import { EventEmitter } from 'events';
 import { Order } from '../models/order';
 import { ProductsSeller } from '../models/productsSeller';
+import { CleaningFee } from '../models/cleaningFee';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 const apiUrl = "http://localhost:8090/Product/";
+
 @Injectable()
 export class ProductService {
   productsObs: Observable<ProductsSeller[]>;
@@ -39,11 +41,22 @@ export class ProductService {
       });
       this.calculateLocalFavProdCounts();
       this.calculateLocalCartProdCounts();
+     // this.resetLocalCartProducts();
+   
 	}
   getProducts1(): Observable<ProductsSeller[]> {
     return this.http.get<ProductsSeller[]>(apiUrl, httpOptions).pipe(
       tap(heroes => console.log(heroes))
       
+
+    );
+  }
+
+  getCleaningFees(): Observable<CleaningFee[]> {
+    const url = "http://localhost:8090/CleaningFee/";
+    return this.http.get<CleaningFee[]>(url, httpOptions).pipe(
+      tap(heroes => console.log(heroes))
+
 
     );
   }
@@ -194,7 +207,11 @@ export class ProductService {
 	addToCart(data: ProductsSeller): void {
       let a: ProductsSeller[];
       data.product.quantity = 1;
-      if (localStorage.getItem('avct_item') === "undefined") {
+      let cleaningFee =new  CleaningFee;
+
+      cleaningFee.id = 0;
+      data.product.cleaningFee = cleaningFee; 
+      if (localStorage.getItem('avct_item') === "undefined" || localStorage.getItem('avct_item')===null) {
 
         a = [];
       } else {
@@ -275,11 +292,29 @@ export class ProductService {
     this.calculateLocalCartProdCounts();
 
   }
+  update() {
+
+  }
+  updateFeesOnLocalStorage(product: ProductF) {
+    const products = this.getLocalCartProducts();
+    for (let i = 0; i < products.length; i++) {
+      if (product.id === products[i].product.id) {
+        products[i].product.cleaningFee = product.cleaningFee;
+      }
+    }
+    localStorage.setItem('avct_item', JSON.stringify(products));
+
+    this.calculateLocalCartProdCounts();
+
+  }
 	// returning LocalCarts Product Count
   calculateLocalCartProdCounts() {
 
-		this.navbarCartCount = this.getLocalCartProducts().length;
-	}
+    if (this.getLocalCartProducts() != null) {
+      this.navbarCartCount = this.getLocalCartProducts().length;
+    }
+
+  }
 }
 
 export class FavouriteProduct {

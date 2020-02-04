@@ -17,7 +17,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
  
-const apiUrl = "http://localhost:8090/Product/";
+const apiUrl = "http://localhost:8090/Order/";
 @Injectable({
   providedIn: "root"
 })
@@ -53,6 +53,21 @@ export class BillingService {
         console.log(hero);
    
    
+      }
+      )
+    );
+
+
+  }
+  confirmOrder(order: Order): Observable<Order> {
+    order.status = 2;
+    console.log("Before Creation")
+    const url = `${apiUrl}/`+order.id;
+    return this.http.put<Order>(url, order, httpOptions).pipe(
+      tap(hero => {
+        console.log(hero);
+
+
       }
       )
     );

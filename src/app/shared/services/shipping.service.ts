@@ -16,6 +16,7 @@ import { User } from "../models/user";
 import { Country } from "../models/country";
 import { ProductService } from "./product.service";
 import { ProductsSeller } from "../models/productsSeller";
+import { CleaningFee } from "../models/cleaningFee";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -71,17 +72,27 @@ export class ShippingService {
     this.order.zip = data.userDetails.zip;
     this.ordersProducts = [];
     let total = 0;
+    let totalPacakging = 0;
+    let totalCleaning = 0;
+   
     productList.forEach((productseller: ProductsSeller) => {
       console.log(productseller);
+      totalPacakging += 5 * productseller.product.quantity;
       total += (productseller.product.price * productseller.product.quantity);
+      totalCleaning += productseller.product.cleaningFee.feeAmount * productseller.product.quantity;
       this.ordersProduct = new OrdersProducts;
       this.ordersProduct.product = productseller.product;
       this.ordersProduct.quantity = productseller.product.quantity;
+      this.ordersProduct.cleaningFee = new CleaningFee;
+
+      this.ordersProduct.cleaningFee.id = productseller.product.cleaningFee.id;
+      this.ordersProduct.cleaningFeeId = productseller.product.cleaningFee.id;
      
       this.ordersProducts.push(this.ordersProduct);
      }
      );
-    
+    total += totalCleaning;
+    total += totalPacakging;
     this.order.total = total;
    this.order.ordersProducts = this.ordersProducts;
 

@@ -49,13 +49,20 @@ export class ShippingDetailsComponent implements OnInit {
 		data['userId'] = this.user.id;
 		const products = [];
 
-		let totalPrice = 0;
-
+      let totalPrice = 0;
+      let totalCleaning = 0;
+      let totalPacakging = 0;
+     
+ 
       this.productsSeller.forEach((productSeller) => {
 		//	delete product['id'];
-        totalPrice += productSeller.product.price;
+         totalPrice += productSeller.product.price * productSeller.product.quantity;
+         totalCleaning += productSeller.product.cleaningFee.feeAmount;
         products.push(productSeller);
-		});
+      });
+      totalPacakging = products.length * 5;
+      totalPrice +=  totalCleaning;
+      totalPrice += totalPacakging;
 
 		data['products'] = products;
 

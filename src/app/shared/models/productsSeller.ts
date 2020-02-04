@@ -1,5 +1,6 @@
 import { ProductF } from "./productF";
 import { User } from "./user";
+import { CleaningFee } from "./cleaningFee";
  
 
 export class ProductsSeller {
@@ -12,4 +13,5 @@ export class ProductsSeller {
   creationDate: Date;
   user: User;
   product: ProductF;
+  cleaningFee: CleaningFee;
 }

@@ -14,7 +14,9 @@ export const UserRoutes: Routes = [
 				path: '',
 				component: UserAccountComponent,
 				outlet: 'profileOutlet'
-      } 
-		]
-	}
+          }
+           
+        ]
+
+  }
 ];
