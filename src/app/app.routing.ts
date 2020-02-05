@@ -27,7 +27,12 @@ export const AppRoutes: Routes = [
           {
             path: 'users/user/:id',
             component: UserAccountComponent
-          }
+          },
+          {
+            path: 'orders',
+            loadChildren: './layouts/order/order.module#OrderModule'
+          },
+
 		]
 	},
 	{ path: 'no-access', component: NoAccessComponent },

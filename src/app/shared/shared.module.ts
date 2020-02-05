@@ -28,6 +28,7 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { ScrollingModule } from "@angular/cdk/scrolling";
 import { CdkTableModule } from "@angular/cdk/table";
 import { CdkTreeModule } from "@angular/cdk/tree";
+import { OrderService } from "./services/order.service";
 @NgModule({
 	imports: [
 		CommonModule,
@@ -76,7 +77,7 @@ import { CdkTreeModule } from "@angular/cdk/tree";
 		CdkTableModule,
 		CdkTreeModule,
 		DragDropModule, ScrollingModule
-	],
-	providers: [AuthService, AuthGuard, AdminGaurd, ProductService, UserService, FormBuilder]
+  ],
+  providers: [AuthService, AuthGuard, AdminGaurd, ProductService, UserService, FormBuilder, OrderService]
 })
 export class SharedModule { }
