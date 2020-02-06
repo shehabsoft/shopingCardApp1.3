@@ -80,6 +80,40 @@ export class OrderService {
 
     return order;
   }
+  confirmOrder(order: Order): Observable<Order> {
+    order.status = 2;
+    console.log("Before Creation")
+    const url = `${apiUrl}/` + order.id;
+    return this.http.put<Order>(url, order, httpOptions).pipe(
+      tap(hero => {
+        console.log(hero);
+        this.getOrders().subscribe((heros) => {
+          this.orders = heros;
+        });
+
+      }
+      )
+    );
+
+
+  }
+  FullFillOrder(order: Order): Observable<Order> {
+    order.status = 3;
+    console.log("Before Creation")
+    const url = `${apiUrl}/` + order.id;
+    return this.http.put<Order>(url, order, httpOptions).pipe(
+      tap(hero => {
+        console.log(hero);
+        this.getOrders().subscribe((heros) => {
+          this.orders = heros;
+        });
+
+      }
+      )
+    );
+
+
+  }
 
  
    

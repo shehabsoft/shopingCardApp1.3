@@ -35,7 +35,11 @@
               "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
               "node_modules/animate.css/animate.min.css",
               "node_modules/toastr/build/toastr.min.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
+
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
@@ -69,9 +73,11 @@
           }
         },
         "serve": {
+        
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angularShop:build"
+            "browserTarget": "angularShop:build",
+            "port": 1337
           },
           "configurations": {
             "production": {

@@ -59,21 +59,7 @@ export class BillingService {
 
 
   }
-  confirmOrder(order: Order): Observable<Order> {
-    order.status = 2;
-    console.log("Before Creation")
-    const url = `${apiUrl}/`+order.id;
-    return this.http.put<Order>(url, order, httpOptions).pipe(
-      tap(hero => {
-        console.log(hero);
-
-
-      }
-      )
-    );
-
-
-  }
+   
 
   getBillings() {
     this.billings = this.db.list("billings");
