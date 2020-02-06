@@ -1,3 +1,104 @@
-<p>
-  order-details works!
-</p>
+<br />
+<div class="col-md-9">
+  <div class="container">
+
+    <div class="row" *ngIf="!loading">
+      <!-- List of Products -->
+      <div class="col-sm-4 mb-2" *ngFor="let product of order.ordersProducts">
+        <div class="item">
+          <div class=" mb-r">
+            <!--Card-->
+            <div class="card card-cascade wider">
+              <!--Card image-->
+              <a [routerLink]="['/products/product', product.product.id]">
+                <div class="view overlay hm-white-slight">
+                  <img [src]="product.product.imgUrl" class="img-fluid" alt="" width="360px" height="640px">
+                  <a>
+                    <div class="mask waves-effect waves-light" mdbRippleRadius></div>
+                  </a>
+                </div>
+              </a>
+              <!--/.Card image-->
+              <!--Card content-->
+              <div class="card-body text-center no-padding">
+                <!--Category & Title-->
+                <a class="text-muted">
+                  <h5>{{ product.product.nameAr }}</h5>
+                </a>
+                <p class="card-title">
+                  <strong>
+                    Cleaning :<a [routerLink]="['/products/product', product.product.id]" routerLinkActive="router-link-active">
+                      {{
+                          product.cleaningFee.feesNameEn
+                      }}
+                    </a>
+                  </strong>
+                </p>
+                <!--Description-->
+                <p class="card-text">
+                  {{ product.product.category }}
+                </p>
+                <!--Card footer-->
+                <div class="card-footer">
+
+                  <span class="right">
+
+                    <p class="card-text">
+                      Quantity :   {{ product.quantity }}
+                    </p>
+
+
+                  </span>
+                  <a placement="top" mdbTooltip="Add to Wishlist" container="body">
+                    <i class="fa fa-check"></i>
+                  </a>
+                </div>
+              </div>
+              <!--/.Card content-->
+            </div>
+            <!--/.Card-->
+          </div>
+        </div>
+
+      </div>
+      <div class="col-sm-4">
+        <div class="product-image">
+          <div class="view hm-zoom z-depth-2" style="cursor: pointer">
+            <!-- <img src="../../assets/banner_img/img_5.jpg" [alt]="order.total" width="100%" class="img-fluid rounded">-->
+          </div>
+          <div class="" style="margin-top:15px">
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Order ID</h6>
+                </div>
+                <span class="text-muted" style="color:crimson !important">EGP {{order.id}}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Order Price</h6>
+                </div>
+                <span class="text-muted" style="color:crimson !important">EGP {{order.total}}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Order User</h6>
+                </div>
+                <span class="text-muted" style="color:crimson !important">
+
+
+                  <a [routerLink]="['/users/user', order.user.id]"> {{order.user.name}}</a>
+
+                </span>
+              </li>
+            </ul>
+            <button class="btn btn-primary" (click)="fullFillOrder()">Full Fill Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pagination -->
+  
+  </div>
+   
+</div>

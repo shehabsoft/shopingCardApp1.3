@@ -9,6 +9,7 @@ import { Order } from 'src/app/shared/models/order';
 import { Observable } from 'rxjs';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 import { BillingService } from 'src/app/shared/services/billing.service';
+import { OrderService } from 'src/app/shared/services/order.service';
 declare var $: any;
 declare var toastr: any;
 @Component({
@@ -23,7 +24,7 @@ export class ResultComponent implements OnInit {
   tax = 30;
   order: Order;
   orderObservable: Observable<Order>;
-  constructor(private productService: ProductService, private billingService: BillingService, private router: Router) {
+  constructor(private productService: ProductService, private orderService: OrderService, private router: Router) {
     /* Hiding Billing Tab Element */
     document.getElementById('productsTab').style.display = 'none';
     document.getElementById('shippingTab').style.display = 'none';
@@ -54,7 +55,7 @@ export class ResultComponent implements OnInit {
 
     console.log("begin observable");
     this.order = this.productService.getLocalOrder();
-    this.billingService.confirmOrder(this.order).subscribe(response => {
+    this.orderService.confirmOrder(this.order).subscribe(response => {
 
       toastr.success('Order ' + this.order.id + ' : is Confirmed successfully', 'Order Creation');
 

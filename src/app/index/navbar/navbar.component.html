@@ -16,21 +16,35 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="javascript:;;" [routerLink]="[ '/' ]">{{this.translate.data["HOME"] | translate}}
+        <a class="nav-link" href="javascript:;;" [routerLink]="[ '/' ]">
+          {{this.translate.data["HOME"] | translate}}
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/products/all-products' ]">{{
-          this.translate.data["PRODUCTS"] | translate}}</a>
+        <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/products/all-products' ]">
+          {{
+          this.translate.data["PRODUCTS"] | translate
+          }}
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/task-board/tasks' ]">{{
-          this.translate.data["TASKBOARD"] | translate}}</a>
+        <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/orders' ]">
+          {{
+          this.translate.data["ORDERS"] | translate
+          }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/task-board/tasks' ]">
+          {{
+          this.translate.data["TASKBOARD"] | translate
+          }}
+        </a>
       </li>
       <!-- <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li> -->
+    <a class="nav-link" href="#">Pricing</a>
+  </li> -->
     </ul>
     <!-- Links -->
 

@@ -12,6 +12,10 @@ export class OrderListComponent implements OnInit {
   orderId: number;
   ngOnInit() {
     this.orderId = 1653;
+    this.orderService.getOrders().subscribe(response => {
+      console.log(response);
+
+    });
     this.orderService.getOrder(this.orderId).subscribe(response => {
       console.log(response);
 

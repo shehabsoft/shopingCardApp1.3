@@ -1,3 +1,89 @@
-<p>
-  order-list works!
-</p>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="container">
+        <!-- <app-card-loader [loop]="3" [height]="800" *ngIf="loading"></app-card-loader>-->
+        <div class="row" *ngIf="!loading">
+          <!-- List of Products -->
+          <div class="col-sm-4 mb-2" *ngFor="let order of orderService.orders ">
+            <div class="item">
+              <div class=" mb-r">
+                <!--Card-->
+                <div class="card card-cascade wider">
+                  <!--Card image-->
+                  <a [routerLink]="['/orders/order', order.id]">
+                    <div class="view overlay hm-white-slight">
+
+                      <img src="../../assets/banner_img/img_5.jpg" class="img-fluid" alt="" width="360px" height="640px">
+                      <a>
+                        <div class="mask waves-effect waves-light" mdbRippleRadius></div>
+                      </a>
+                    </div>
+                  </a>
+                  <!--/.Card image-->
+                  <!--Card content-->
+                  <div class="card-body text-center no-padding">
+                    <!--Category & Title-->
+                    <a class="text-muted">
+                      <h5>{{ order.id }}</h5>
+                    </a>
+                    <p class="card-title">
+                      <strong>
+                        <a [routerLink]="['/orders/order', order.id]" routerLinkActive="router-link-active">
+                          {{
+                          order.user.name
+                          }}
+                        </a>
+                      </strong>
+                    </p>
+                    <!--Description-->
+                    <p class="card-text">
+                      {{ order.country.englishName }}
+                    </p>
+                    <!--Card footer-->
+                    <div class="card-footer">
+                      <span class="left">EGP {{  order.total }}</span>
+                      <!-- <span class="right">
+                      <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)=" ">
+                        <i class="fa fa-heart"></i>
+                      </a>
+                      <a placement="top" mdbTooltip="Add to Cart" container="body" (click)=" ">
+                        <i class="fa fa-shopping-cart"></i>
+                      </a>
+                      <a placement="top" mdbTooltip="Remove Product" container="body"
+                         (click)=" ">
+                        <i class="fa fa-trash"></i>
+                      </a>
+
+                      <a placement="top" mdbTooltip="Remove Product" container="body"
+                         (click)=" ">
+                        <i class="fa fa-trash"></i>
+                      </a>
+                    </span>-->
+                    </div>
+                  </div>
+                  <!--/.Card content-->
+                </div>
+                <!--/.Card-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination -->
+
+      </div>
+
+    </div>
+
+    <ul class="list-group mb-3">
+ 
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Total Orders :</span>
+        <span class="badge badge-primary badge-pill">{{orderService.orders.length}}</span>
+      </h4>
+      
+
+    </ul>
+  </div>
+</div>
