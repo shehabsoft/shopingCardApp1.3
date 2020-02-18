@@ -2,19 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
     "\\src\\app\\index",
-    "\\src\\app\\index\\footer",
-    "\\src\\app\\index\\login",
-    "\\src\\app\\index\\navbar",
+    "\\src\\app\\layouts\\order",
+    "\\src\\app\\layouts\\product",
+    "\\src\\app\\layouts\\product\\cart-calculator",
+    "\\src\\app\\layouts\\product\\cart-products",
+    "\\src\\app\\layouts\\product\\checkout",
     "\\src\\app\\shared",
-    "\\src\\app\\shared\\animations",
     "\\src\\app\\shared\\components",
-    "\\src\\assets",
-    "\\src\\assets\\icons",
-    "\\src\\assets\\theme",
-    "\\src\\environments"
+    "\\src\\assets\\banner_img"
   ],
-  "SelectedNode": "\\src\\app\\index\\navbar\\navbar.component.ts",
+  "SelectedNode": "\\LICENSE",
   "PreviewInSolutionExplorer": false
 }

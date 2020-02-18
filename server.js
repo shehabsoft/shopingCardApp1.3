@@ -7,3 +7,4 @@ res.sendFile(path.join(__dirname, 'angular-build', 'index.html'))
 });
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 1337);
+console.log('Console Listing ');
