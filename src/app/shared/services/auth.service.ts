@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
 import { UserService } from "./user.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-const userApiUrl = "https://us-cdbr-iron-east-04.cleardb.net/User/";
+const userApiUrl = "https://secure-reaches-93881.herokuapp.com/User/";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };

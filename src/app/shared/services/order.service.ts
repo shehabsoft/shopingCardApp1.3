@@ -14,7 +14,7 @@ import { CleaningFee } from '../models/cleaningFee';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-const apiUrl = "https://us-cdbr-iron-east-04.cleardb.net/Order/";
+const apiUrl = "https://secure-reaches-93881.herokuapp.com/Order/";
 
 @Injectable()
 export class OrderService {
@@ -123,7 +123,7 @@ export class OrderService {
 	}
 
   deleteOrder(key: string): Observable<Order> {
-    const url = `https://us-cdbr-iron-east-04.cleardb.net/Order/${key}`;
+    const url = `https://secure-reaches-93881.herokuapp.com/Order/${key}`;
 
       return this.http.delete<Order>(url, httpOptions).pipe(
         tap(_ => {

@@ -14,7 +14,7 @@ import { CleaningFee } from '../models/cleaningFee';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-const apiUrl = "https://us-cdbr-iron-east-04.cleardb.net/Product/";
+const apiUrl = "https://secure-reaches-93881.herokuapp.com/Product/";
 
 @Injectable()
 export class ProductService {
@@ -53,7 +53,7 @@ export class ProductService {
   }
 
   getCleaningFees(): Observable<CleaningFee[]> {
-    const url = "https://us-cdbr-iron-east-04.cleardb.net/CleaningFee/";
+    const url = "https://secure-reaches-93881.herokuapp.com/CleaningFee/";
     return this.http.get<CleaningFee[]>(url, httpOptions).pipe(
       tap(heroes => console.log(heroes))
 
@@ -126,7 +126,7 @@ export class ProductService {
 	}
 
   deleteProduct(key: string): Observable<Product> {
-      const url = `https://us-cdbr-iron-east-04.cleardb.net/Product/${key}`;
+      const url = `https://secure-reaches-93881.herokuapp.com/Product/${key}`;
 
       return this.http.delete<Product>(url, httpOptions).pipe(
         tap(_ => {
