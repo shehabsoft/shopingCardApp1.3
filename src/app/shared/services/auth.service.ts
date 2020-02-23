@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
 import { UserService } from "./user.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-const userApiUrl = "http://127.0.0.1:8090/User/";
+const userApiUrl = "https://us-cdbr-iron-east-04.cleardb.net/User/";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };

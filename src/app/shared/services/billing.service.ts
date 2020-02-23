@@ -17,7 +17,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
  
-const apiUrl = "http://localhost:8090/Order/";
+const apiUrl = "https://us-cdbr-iron-east-04.cleardb.net/Order/";
 @Injectable({
   providedIn: "root"
 })
