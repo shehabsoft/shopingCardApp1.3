@@ -28,20 +28,21 @@
           }}
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="authService.isAdmin()">
         <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/orders' ]">
           {{
           this.translate.data["ORDERS"] | translate
           }}
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/task-board/tasks' ]">
-          {{
-          this.translate.data["TASKBOARD"] | translate
-          }}
-        </a>
-      </li>
+      <!--  <li class="nav-item">
+          <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/task-board/tasks' ]">
+            {{
+            this.translate.data["TASKBOARD"] | translate
+            }}
+          </a>
+        </li>
+      -->
       <!-- <li class="nav-item">
     <a class="nav-link" href="#">Pricing</a>
   </li> -->
@@ -150,7 +151,7 @@
           <i class="fa fa-sign-in mr-1"></i>{{this.translate.data["LOGOUT"] | translate}}</a>
       </li>
       <li class="nav-item">
-        <a href="javascript:;;" class="nav-link">Angular v-{{angularVersion.full}}</a>
+        <a href="javascript:;;" class="nav-link">Beta Version</a>
       </li>
     </ul>
   </div>
