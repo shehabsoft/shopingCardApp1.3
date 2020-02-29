@@ -10,7 +10,13 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 const userApiUrl = "https://secure-reaches-93881.herokuapp.com/User/";
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Credentials': 'true',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
+  })
 };
 @Injectable()
 export class AuthService {

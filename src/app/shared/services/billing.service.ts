@@ -14,9 +14,14 @@ import { Observable } from "rxjs";
 import { catchError, tap, map } from 'rxjs/operators';
 import { ProductService } from "./product.service";
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Credentials': 'true',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
+  })
 };
- 
 const apiUrl = "https://secure-reaches-93881.herokuapp.com/Order/";
 @Injectable({
   providedIn: "root"
