@@ -83,7 +83,7 @@ export class AuthService {
     );
   }
   isLoggedIn(): boolean {
-    if (this.userLogin !== null && this.userLogin.id !== null)//&& typeof(this.userLogin.email ) != "undefined"
+    if (this.userLogin !== null && this.userLogin.id !== undefined)//&& typeof(this.userLogin.email ) != "undefined"
     {
       console.log("Email Is "+this.userLogin.id);
       return true;
