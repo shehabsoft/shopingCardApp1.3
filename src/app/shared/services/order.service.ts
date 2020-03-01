@@ -56,7 +56,7 @@ export class OrderService {
     );
   }
   getOrder(id: number): Observable<Order> {
-    const url = `${apiUrl}/${id}`;
+    const url = `${apiUrl}${id}`;
     return this.http.get<Order>(url).pipe(
       tap(heros => console.log(`fetched product id=${id}`))
     );
@@ -89,7 +89,7 @@ export class OrderService {
   confirmOrder(order: Order): Observable<Order> {
     order.status = 2;
     console.log("Before Creation")
-    const url = `${apiUrl}/` + order.id;
+    const url = `${apiUrl}` + order.id;
     return this.http.put<Order>(url, order, httpOptions).pipe(
       tap(hero => {
         console.log(hero);
@@ -106,7 +106,7 @@ export class OrderService {
   FullFillOrder(order: Order): Observable<Order> {
     order.status = 3;
     console.log("Before Creation")
-    const url = `${apiUrl}/` + order.id;
+    const url = `${apiUrl}` + order.id;
     return this.http.put<Order>(url, order, httpOptions).pipe(
       tap(hero => {
         console.log(hero);
