@@ -6,6 +6,7 @@ import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { ProductF } from 'src/app/shared/models/productF';
 import { Observable } from 'rxjs';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
+import { TranslateService } from "../../shared/services/translate.service";
 declare var toastr: any;
 @Component({
 	selector: 'app-product-list',
@@ -25,13 +26,16 @@ export class ProductListComponent implements OnInit{
 	constructor(
 		public authService: AuthService,
 		private productService: ProductService,
-		private toastrService: ToastrService
+      private toastrService: ToastrService, public translate: TranslateService
 	) { }
 
 	ngOnInit() {
 		this.getAllProducts();
   }
-
+  setLang(lang: string) {
+    // console.log("Language", lang);
+    this.translate.use(lang).then(() => { });
+  }
 	getAllProducts() {
 		// this.spinnerService.show();
 		this.loading = true;
