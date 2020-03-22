@@ -12,15 +12,16 @@
   <div class="row">
     <div class="col-md-3">
       <div class="form-group">
-        <label for="brand_select">By Brands:</label>
+        <label for="brand_select">{{this.translate.data["BRAND"] | translate}}:</label>
         <select class="form-control" name="" id="brand_select" [(ngModel)]="selectedBrand">
           <option *ngFor="let brand of brands" [ngValue]="brand">{{brand}}</option>
         </select>
       </div>
       <ul class="list-group">
-        <li class="list-group-item">FISH</li>
-        <li class="list-group-item">CAR </li>
- 
+        <li class="list-group-item"> {{this.translate.data["FISH"] | translate}} </li>
+        <li class="list-group-item">{{this.translate.data["SHEEP"] | translate}} </li>
+     
+
       </ul>
     </div>
     <div class="col-md-9">
