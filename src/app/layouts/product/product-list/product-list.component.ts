@@ -6,7 +6,7 @@ import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { ProductF } from 'src/app/shared/models/productF';
 import { Observable } from 'rxjs';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
-import { TranslateService } from "../../shared/services/translate.service";
+import { TranslateService } from "../../../shared/services/translate.service";
 declare var toastr: any;
 @Component({
 	selector: 'app-product-list',
