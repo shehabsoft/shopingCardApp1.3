@@ -13,6 +13,7 @@ import { User } from "../models/user";
 import { Observable } from "rxjs";
 import { catchError, tap, map } from 'rxjs/operators';
 import { ProductService } from "./product.service";
+import { Constant } from "../models/constant"; 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -22,7 +23,7 @@ const httpOptions = {
     'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
   })
 };
-const apiUrl = "https://secure-reaches-93881.herokuapp.com/Order/";
+const apiUrl = Constant.API_ENDPOINT+"/Order/ ";
 @Injectable({
   providedIn: "root"
 })

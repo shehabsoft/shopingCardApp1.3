@@ -1,8 +1,11 @@
-<br>
+ 
 <section class="container">
-
+  <div  class="col-sm-8" style="float: left;" ><img src="../../../assets/img/E-CommerceRight.jpg" width="100%" /></div>
   <!-- Login form -->
-  <div class="col-sm-6">
+  <br />
+  <br />
+  <br />
+  <div class="col-sm-4" style="float: left;">
     <form style="width:22rem" #loginForm="ngForm" (ngSubmit)="signInWithEmail(loginForm)">
       <p class="h5 text-center mb-4">Sign in</p>
 
@@ -20,19 +23,20 @@
       <div class="text-center">
         <button type="submit" class="btn btn-primary waves-light" id="loginButton" mdbRippleRadius>Login</button>
 
-        <button type="button" class="btn waves-light" (click)="signInWithGoogle()" style="background-color: #dd4b39">
-          <i class="fa fa-google" aria-hidden="true"></i>
-          Sign in with Google
+        <button type="button" class="btn btn-primary waves-light" (click)="facebookLogin()">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+          Sign in
         </button>
 
       </div>
     </form>
   </div>
+
   <br>
-  <!--<p>New User ?
+  <p>New User ?
     <a data-toggle="modal" data-target="#createUserForm" style="color:dodgerblue">Register here!</a>
   </p>
-      -->
+     
   <!-- Login form -->
   <!--Modal: Register Form-->
   <div class="modal fade" id="createUserForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -40,15 +44,15 @@
       <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
         <div class="modal-content">
 
-         <!-- <div class="modal-header light-blue darken-3 white-text">
-            <h4 class="title">
-              <i class="fa fa-user-plus"></i> Register
-            </h4>
-            <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-             -->
+          <!-- <div class="modal-header light-blue darken-3 white-text">
+             <h4 class="title">
+               <i class="fa fa-user-plus"></i> Register
+             </h4>
+             <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">×</span>
+             </button>
+           </div>
+              -->
           <div class="modal-body">
             <div class="alert alert-danger" role="alert" *ngIf="errorInUserCreate">
               {{errorMessage.message}}
@@ -62,6 +66,21 @@
               <label for="password">password</label>
               <input mdbActive type="password" id="password" class="form-control" name="password" [(ngModel)]="createUser.password"
                      placeholder="Password" mdbInputValidate autocomplete="new-password">
+            </div>
+            <div class="form-group form-sm">
+              <label for="password">Name</label>
+              <input mdbActive type="text" id="name" class="form-control" name="name" [(ngModel)]="createUser.name"
+                     placeholder="Name" mdbInputValidate autocomplete="Name">
+            </div>
+            <div class="form-group form-sm">
+              <label for="password">Mobile Number</label>
+              <input mdbActive type="text" id="name" class="form-control" name="mobileNumber" [(ngModel)]="createUser.mobileNumber"
+                     placeholder="Phone Number" mdbInputValidate autocomplete="Number">
+            </div>
+            <div class="form-group form-sm">
+              <label for="password">Address</label>
+              <input mdbActive type="text" id="name" class="form-control" name="address" [(ngModel)]="createUser.address"
+                     placeholder="Home Address" mdbInputValidate autocomplete="Home">
             </div>
             <div class="text-center mt-2">
               <button class="btn btn-info waves-light" id="signUpButton" mdbRippleRadius>

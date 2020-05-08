@@ -18,7 +18,7 @@ import { FilterByBrandPipe } from "./pipes/filterByBrand.pipe";
 import { ProductService } from "./services/product.service";
 import { AdminGaurd } from "./services/admin-gaurd";
 import { AuthGuard } from "./services/auth_gaurd";
-import { AuthService } from "./services/auth.service";
+import { AuthServiceLocal } from "./services/auth.service.local";
 import { UserService } from "./services/user.service";
 import { TranslatePipe } from "./pipes/translate.pipe";
 import { NgxContentLoadingModule } from "ngx-content-loading";
@@ -78,6 +78,6 @@ import { OrderService } from "./services/order.service";
 		CdkTreeModule,
 		DragDropModule, ScrollingModule
   ],
-  providers: [AuthService, AuthGuard, AdminGaurd, ProductService, UserService, FormBuilder, OrderService]
+  providers: [AuthServiceLocal, AuthGuard, AdminGaurd, ProductService, UserService, FormBuilder, OrderService]
 })
 export class SharedModule { }

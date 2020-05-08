@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../shared/models/product';
-import { AuthService } from '../../../shared/services/auth.service';
+import { AuthServiceLocal } from '../../../shared/services/auth.service.local';
 import { ProductService } from '../../../shared/services/product.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { ProductF } from 'src/app/shared/models/productF';
@@ -24,7 +24,7 @@ export class ProductListComponent implements OnInit{
   imageBlobUrl: string | null = null;
 	page = 1;
 	constructor(
-		public authService: AuthService,
+      public authService: AuthServiceLocal,
 		private productService: ProductService,
       private toastrService: ToastrService, public translate: TranslateService
 	) { }

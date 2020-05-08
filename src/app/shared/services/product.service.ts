@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import { Product } from '../models/product';
-import { AuthService } from './auth.service';
+import { AuthServiceLocal } from './auth.service.local';
 import { ToastrService } from './toastr.service';
 import { Observable } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { EventEmitter } from 'events';
 import { Order } from '../models/order';
 import { ProductsSeller } from '../models/productsSeller';
 import { CleaningFee } from '../models/cleaningFee';
+import { Constant } from "../models/constant"; 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -19,7 +20,7 @@ const httpOptions = {
     'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'} )
 };
-const apiUrl = "https://secure-reaches-93881.herokuapp.com/Product/";
+const apiUrl = Constant.API_ENDPOINT+"/Product/ ";
 
 @Injectable()
 export class ProductService {
@@ -37,7 +38,7 @@ export class ProductService {
 
 	constructor(
 		private db: AngularFireDatabase,
-		private authService: AuthService,
+		private authService: AuthServiceLocal,
       private toastrService: ToastrService, private http: HttpClient 
 	) {
 		
@@ -58,12 +59,11 @@ export class ProductService {
   }
 
   getCleaningFees(): Observable<CleaningFee[]> {
-    const url = "https://secure-reaches-93881.herokuapp.com/CleaningFee/";
+    const url = Constant.API_ENDPOINT + '/CleaningFee/';
     return this.http.get<CleaningFee[]>(url, httpOptions).pipe(
       tap(heroes => console.log(heroes))
 
-
-    );
+          );
   }
 
  
@@ -131,7 +131,7 @@ export class ProductService {
 	}
 
   deleteProduct(key: string): Observable<Product> {
-      const url = `https://secure-reaches-93881.herokuapp.com/Product/${key}`;
+    const url = Constant.API_ENDPOINT+'/ Product / ${ key }';
 
       return this.http.delete<Product>(url, httpOptions).pipe(
         tap(_ => {

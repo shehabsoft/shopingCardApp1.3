@@ -13,8 +13,9 @@ import { UserModule } from './layouts/user/user.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
- 
-
+import { SocialLoginModule, AuthServiceConfig } from 'angular5-social-login';
+import { FacebookLoginProvider } from 'angular5-social-login';
+import { getAuthServiceConfigs } from './socialloginConfig';
 /* to load and set en.json as the default application language */
 export function setupTranslateFactory(service: TranslateService): Function {
 	return () => service.use('en');
@@ -30,6 +31,7 @@ export function setupTranslateFactory(service: TranslateService): Function {
 		ProductModule,
 		UserModule,
 		SharedModule,
+      SocialLoginModule,
 		RouterModule.forRoot(AppRoutes),
 		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 	],
@@ -37,10 +39,14 @@ export function setupTranslateFactory(service: TranslateService): Function {
 		TranslateService,
 		{
 			provide: APP_INITIALIZER,
-			useFactory: setupTranslateFactory,
+          useFactory: setupTranslateFactory,
+
 			deps: [ TranslateService ],
 			multi: true
-		}
+      },
+      {
+        provide: AuthServiceConfig, useFactory: getAuthServiceConfigs
+      }
 	],
 	bootstrap: [ AppComponent ],
 	schemas: [ NO_ERRORS_SCHEMA ]

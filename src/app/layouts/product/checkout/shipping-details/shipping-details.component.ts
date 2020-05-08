@@ -1,7 +1,7 @@
 import { Product } from '../../../../shared/models/product';
 import { ShippingService } from '../../../../shared/services/shipping.service';
 import { UserDetail, User } from '../../../../shared/models/user';
-import { AuthService } from '../../../../shared/services/auth.service';
+import { AuthServiceLocal } from '../../../../shared/services/auth.service.local';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -22,7 +22,7 @@ export class ShippingDetailsComponent implements OnInit {
 	productsSeller: ProductsSeller[];
 
 	constructor(
-		authService: AuthService,
+      authService: AuthServiceLocal,
 		private shippingService: ShippingService,
 		private productService: ProductService,
 		private router: Router

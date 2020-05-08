@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/shared/models/user';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthServiceLocal } from 'src/app/shared/services/auth.service.local';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class UserAccountComponent implements OnInit {
   id: string;
   // Enable Update Button
 
-  constructor(private route: ActivatedRoute, private authService: AuthService) {
+  constructor(private route: ActivatedRoute, private authService: AuthServiceLocal) {
     this.loggedUser = new User();
    
   }

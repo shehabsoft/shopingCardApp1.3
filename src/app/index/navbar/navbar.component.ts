@@ -4,7 +4,7 @@ import {
   VERSION
 } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from "../../shared/services/auth.service";
+import { AuthServiceLocal } from "../../shared/services/auth.service.local";
 import { ProductService } from "../../shared/services/product.service";
 import { TranslateService } from "../../shared/services/translate.service";
 import { ThemeService } from "src/app/shared/services/theme.service";
@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   angularVersion = VERSION;
 
   constructor(
-    public authService: AuthService,
+    public authService: AuthServiceLocal,
     private router: Router,
     public productService: ProductService,
     public translate: TranslateService,

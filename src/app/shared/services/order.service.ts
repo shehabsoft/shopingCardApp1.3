@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import { Product } from '../models/product';
-import { AuthService } from './auth.service';
+import { AuthServiceLocal } from './auth.service.local';
 import { ToastrService } from './toastr.service';
 import { Observable } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { EventEmitter } from 'events';
 import { Order } from '../models/order';
 import { ProductsSeller } from '../models/productsSeller';
 import { CleaningFee } from '../models/cleaningFee';
+import { Constant } from "../models/constant"; 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -20,7 +21,7 @@ const httpOptions = {
     'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
   })
 };
-const apiUrl = "https://secure-reaches-93881.herokuapp.com/Order/";
+const apiUrl = Constant.API_ENDPOINT+"/Order/";
 
 @Injectable()
 export class OrderService {
@@ -36,7 +37,7 @@ export class OrderService {
 
 	constructor(
 		private db: AngularFireDatabase,
-		private authService: AuthService,
+		private authService: AuthServiceLocal,
       private toastrService: ToastrService, private http: HttpClient 
 	) {
 		
@@ -129,7 +130,7 @@ export class OrderService {
 	}
 
   deleteOrder(key: string): Observable<Order> {
-    const url = `https://secure-reaches-93881.herokuapp.com/Order/${key}`;
+    const url = Constant.API_ENDPOINT+"/Order/${key}";
 
       return this.http.delete<Order>(url, httpOptions).pipe(
         tap(_ => {

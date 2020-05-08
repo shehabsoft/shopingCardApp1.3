@@ -7,8 +7,8 @@ import { AngularFireAuth } from "angularfire2/auth";
 import { Router } from "@angular/router";
 import { UserService } from "./user.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Constant } from "../models/constant"; 
 
-const userApiUrl = "https://secure-reaches-93881.herokuapp.com/User/";
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ const httpOptions = {
   })
 };
 @Injectable()
-export class AuthService {
+export class AuthServiceLocal {
   user: Observable<firebase.User>;
   userDetails: firebase.User = null;
   loggedUser;
@@ -52,7 +52,7 @@ export class AuthService {
   signIn(user: User): Observable<User> {
     console.log("calling Backend Sign In ");
     this.userLogin = user;
-    const url = userApiUrl + "signIn/";
+    const url = Constant.API_ENDPOINT+'User/signIn/';
     return this.http.post<User>(url, user, httpOptions).pipe(
       tap(herso => {
         console.log(herso);
@@ -68,9 +68,26 @@ export class AuthService {
   }
   getSellerAccountById(id: number): Observable<User> {
     console.log("calling Backend getSellerAccountById ");
-    const url = userApiUrl + id;
+    const url = Constant.API_ENDPOINT + id;
     let user: User;
     user.id = id;
+    return this.http.post<User>(url, user, httpOptions).pipe(
+      tap(herso => {
+        console.log(herso);
+        this.userLogin = herso
+      },
+        err => console.log(err))
+
+
+
+    );
+  }
+  getAccountByEmail(email: string): Observable<User> {
+    console.log("calling Backend getSellerAccountById ");
+    const url = Constant.API_ENDPOINT+'/UserEmail';
+    let user: User=new User;
+    user.email = email;
+
     return this.http.post<User>(url, user, httpOptions).pipe(
       tap(herso => {
         console.log(herso);
@@ -85,7 +102,7 @@ export class AuthService {
   isLoggedIn(): boolean {
     if (this.userLogin !== null && this.userLogin.id !== undefined)//&& typeof(this.userLogin.email ) != "undefined"
     {
-      console.log("Email Is "+this.userLogin.id);
+    //  console.log("Email Is "+this.userLogin.id);
       return true;
     }
   }
@@ -96,17 +113,32 @@ export class AuthService {
     this.firebaseAuth.auth.signOut().then(res => this.router.navigate(["/"]));
   }
 
-  createUserWithEmailAndPassword(emailID: string, password: string) {
-    return this.firebaseAuth.auth.createUserWithEmailAndPassword(
-      emailID,
-      password
+  createUserWithEmailAndPassword(emailID: string, password: string, name: string, mobileNumber: number,address:string): Observable<User> {
+    console.log("calling Backend signup ");
+    const url = Constant.API_ENDPOINT +'User/';
+    let user: User = new User;
+    user.email = emailID;
+    user.password = password;
+    user.name = name;
+    user.mobileNumber = mobileNumber;
+    user.address = address;
+
+    return this.http.post<User>(url, user, httpOptions).pipe(
+      tap(herso => {
+        console.log(herso);
+        this.userLogin = herso
+      },
+        err => console.log(err))
+
+
+
     );
   }
 
   getLoggedInUser(): User {
      this.userLogin;
    
-    console.log(this.userLogin);
+   // console.log(this.userLogin);
     
 
     return this.userLogin;

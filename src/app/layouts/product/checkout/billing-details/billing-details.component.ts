@@ -3,7 +3,7 @@ import { Product } from '../../../../shared/models/product';
 import { BillingService } from '../../../../shared/services/billing.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { User, UserDetail } from '../../../../shared/models/user';
-import { AuthService } from '../../../../shared/services/auth.service';
+import { AuthServiceLocal } from '../../../../shared/services/auth.service.local';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ProductF } from 'src/app/shared/models/productF';
@@ -22,7 +22,7 @@ export class BillingDetailsComponent implements OnInit {
   totalPrice: number;
   order: Order;
 	constructor(
-      private authService: AuthService,
+      private authService: AuthServiceLocal,
 		private billingService: BillingService,
 		private productService: ProductService,
 		private router: Router
