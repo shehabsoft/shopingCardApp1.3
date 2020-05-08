@@ -1,3 +1,3 @@
 export class Constant {
-  public static API_ENDPOINT = 'http://127.0.0.1:8090/';
+  public static API_ENDPOINT = 'https://secure-reaches-93881.herokuapp.com/';
 }
