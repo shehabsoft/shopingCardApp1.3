@@ -17,6 +17,7 @@ import { Country } from "../models/country";
 import { ProductService } from "./product.service";
 import { ProductsSeller } from "../models/productsSeller";
 import { CleaningFee } from "../models/cleaningFee";
+import { Constant } from "../models/constant";
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -28,7 +29,7 @@ const httpOptions = {
 };
 declare var $: any;
 declare var toastr: any;
-const apiUrl = "https://secure-reaches-93881.herokuapp.com/Order/";
+const apiUrl = Constant.API_ENDPOINT + "/Order/";
 @Injectable({
   providedIn: "root"
 })

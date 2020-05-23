@@ -12,6 +12,7 @@ import { Order } from '../models/order';
 import { ProductsSeller } from '../models/productsSeller';
 import { CleaningFee } from '../models/cleaningFee';
 import { Constant } from "../models/constant"; 
+import { User } from '../models/user';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -28,7 +29,7 @@ export class OrderService {
   ordersObs: Observable<Order[]>;
   orders: Order[];
   product: ProductF = new ProductF;
- 
+  user: User;
  
 
 	// NavbarCounts
@@ -40,8 +41,9 @@ export class OrderService {
 		private authService: AuthServiceLocal,
       private toastrService: ToastrService, private http: HttpClient 
 	) {
-		
-      this.getOrders().subscribe((heros) => {
+
+      this.user = this.authService.getLoggedInUser();
+      this.getOrders(this.user.id).subscribe((heros) => {
         this.orders = heros;
       });
     //  this.calculateLocalFavProdCounts();
@@ -49,8 +51,10 @@ export class OrderService {
      // this.resetLocalCartProducts();
    
 	}
-  getOrders1(): Observable<Order[]> {
-    return this.http.get<Order[]>(apiUrl, httpOptions).pipe(
+  getOrders1(userId: number): Observable<Order[]> {
+    const url = `${apiUrl}User/` + userId;
+   
+    return this.http.get<Order[]>(url, httpOptions).pipe(
       tap(heroes => console.log(heroes))
       
 
@@ -63,10 +67,10 @@ export class OrderService {
     );
 
   }
-  getOrders(): Observable<Order[]> {
+  getOrders(userId:number): Observable<Order[]> {
 		////this.products = this.db.list('products');
       // return this.products;
-    this.ordersObs = this.getOrders1();
+    this.ordersObs = this.getOrders1(userId);
     this.ordersObs.subscribe(heros => {
       localStorage.setItem('order_list', JSON.stringify(heros));
     });
@@ -94,7 +98,7 @@ export class OrderService {
     return this.http.put<Order>(url, order, httpOptions).pipe(
       tap(hero => {
         console.log(hero);
-        this.getOrders().subscribe((heros) => {
+        this.getOrders(this.user.id).subscribe((heros) => {
           this.orders = heros;
         });
 
@@ -111,7 +115,7 @@ export class OrderService {
     return this.http.put<Order>(url, order, httpOptions).pipe(
       tap(hero => {
         console.log(hero);
-        this.getOrders().subscribe((heros) => {
+        this.getOrders(this.user.id).subscribe((heros) => {
           this.orders = heros;
         });
 
@@ -137,7 +141,7 @@ export class OrderService {
 
           console.log(`deleted product id=${key}`);
 
-          this.getOrders1().subscribe((heros) => {
+          this.getOrders1(this.user.id).subscribe((heros) => {
             this.orders = heros
           });
         })
