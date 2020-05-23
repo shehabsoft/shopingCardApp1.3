@@ -1,4 +1,5 @@
 import { CleaningFee } from "./cleaningFee";
+import { User } from "./user";
 
 export class ProductF {
   $key: string;
@@ -13,4 +14,5 @@ export class ProductF {
   img_data: Blob;
   category: string;
   cleaningFee: CleaningFee;
+  user: User;
 }

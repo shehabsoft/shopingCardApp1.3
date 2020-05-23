@@ -117,9 +117,9 @@ export class ProductService {
      return  this.createProduct1(data);
 
 	}
-  getProduct(id: string): Observable<Product> {
+  getProduct(id: string): Observable<ProductF> {
     const url = `${apiUrl}/${id}`;
-    return this.http.get<Product>(url).pipe(
+    return this.http.get<ProductF>(url).pipe(
       tap(heros => console.log(`fetched product id=${id}`))
     );
     

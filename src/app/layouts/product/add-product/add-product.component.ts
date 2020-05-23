@@ -4,6 +4,8 @@ import { ProductService } from 'src/app/shared/services/product.service';
 import { Product } from 'src/app/shared/models/product';
 import { ProductF } from 'src/app/shared/models/productF';
 import { Router } from '@angular/router';
+import { AuthServiceLocal } from 'src/app/shared/services/auth.service.local';
+import { Category } from 'src/app/shared/models/category';
 
 declare var $: any;
 declare var require: any;
@@ -18,12 +20,34 @@ const moment = require('moment');
 })
 export class AddProductComponent implements OnInit {
   product: ProductF = new ProductF();
-  constructor(private productService: ProductService, private router: Router) {
+   category: Category = new Category();
+  categoryList: Category[];
+  categoryItem: string;
+  constructor(private productService: ProductService, private router: Router, private authService: AuthServiceLocal) {
  
   }
-  data: ProductF = new Product();
+  data: ProductF = new ProductF();
   ngOnInit() {
 
+    
+    this.categoryList= [];
+    this.category.name_ar = "FISH";
+    this.category.name_en = "FISH";
+     this.categoryList.push(this.category);
+    this.category = new Category();
+    this.category.name_ar = "MEAT";
+    this.category.name_en = "MEAT";
+    this.categoryList.push(this.category);
+     this.category = new Category();
+    this.category.name_ar = "CLEANING";
+    this.category.name_en = "CLEANING";
+    this.categoryList.push(this.category);
+  
+
+  }
+  onOptionsSelected( value: string) {
+    console.log("the selected value is " + value + value);
+    this.categoryItem = value;
 
   }
 
@@ -43,6 +67,9 @@ export class AddProductComponent implements OnInit {
       this.data.nameEn = productForm.value.name_en;
       this.data.price = productForm.value.price;
       this.data.details = productForm.value.details;
+      this.data.quantity = productForm.value.quantity;
+      this.data.category = this.categoryItem;
+      this.data.user = this.authService.getLoggedInUser();
      // this.data.img_url =  productForm.value['img_url'];
       this.data.imgUrl = '../../../assets/img/estakotha.png';
       this.productService.createProduct1(this.data).subscribe(
@@ -52,7 +79,7 @@ export class AddProductComponent implements OnInit {
          
           $('#exampleModalLong').modal('hide');
 
-          toastr.success('product ' + productForm.value['productName'] + 'is added successfully', 'Product Creation');
+          toastr.success('product ' + this.data.nameEn + 'is added successfully', 'Product Creation');
           this.router.navigate(['products/all-products']);
 
         }
