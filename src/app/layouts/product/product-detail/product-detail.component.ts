@@ -5,6 +5,7 @@ import { ProductService } from '../../../shared/services/product.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { ProductF } from 'src/app/shared/models/productF';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
+
 @Component({
 	selector: 'app-product-detail',
 	templateUrl: './product-detail.component.html',
@@ -17,7 +18,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 	constructor(
 		private route: ActivatedRoute,
 		private productService: ProductService,
-		private toastrService: ToastrService
+      private toastrService: ToastrService
+     
 	) {
 		this.product = new ProductF();
 	}
@@ -28,7 +30,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
           console.log("get produt Details with ID " + id);
           this.productSeller = this.productService.getLocalProductById(id);
      
-          this.product = this.productSeller.product;
+        this.product = this.productSeller.product;
+        console.log("Selected Product :" + this.product);
 		});
 	}
 

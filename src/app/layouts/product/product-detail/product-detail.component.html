@@ -4,7 +4,8 @@
     <div class="col-sm-4">
       <div class="product-image">
         <div class="view hm-zoom z-depth-2" style="cursor: pointer">
-          <img [src]="product.imgUrl"  [alt]="product.nameAr" width="100%" class="img-fluid rounded">
+          <img src="data:image/png;base64,{{product.imgData}}"[alt]="product.nameAr" *ngIf="product.imgData!=null" class="img-fluid rounded" alt="" width="100%" height="100%">
+          <img [src]="product.imgUrl" [alt]="product.nameAr" width="100%"  *ngIf="product.imgUrl!=null" class="img-fluid rounded">
         </div>
         <div class="" style="margin-top:15px">
           <ul class="list-group mb-3">
@@ -53,7 +54,7 @@
             </tr>
             <tr>
               <th scope="row">Product Added on</th>
-              <td>{{product.price * 1000 | date}}</td>
+              <td>{{productSeller.creationDate}}</td>
             </tr>
           </tbody>
         </table>

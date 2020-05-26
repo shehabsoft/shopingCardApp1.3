@@ -20,7 +20,8 @@
       <ul class="list-group">
         <li class="list-group-item"> {{this.translate.data["FISH"] | translate}} </li>
         <li class="list-group-item">{{this.translate.data["SHEEP"] | translate}} </li>
-     
+        <li class="list-group-item">{{this.translate.data["CLEANING"] | translate}} </li>
+
 
       </ul>
     </div>
@@ -37,8 +38,10 @@
                   <!--Card image-->
                   <a [routerLink]="['/products/product', product.product.id]">
                     <div class="view overlay hm-white-slight">
-                      <img [src]="product.product.imgUrl" class="img-fluid" alt="" width="360px" height="640px">
+                      <img [src]="product.product.imgUrl" class="img-fluid" *ngIf="product.product.imgUrl!=null" alt="" width="360px" height="640px">
+                      <img src="data:image/png;base64,{{product.product.imgData}}" *ngIf="product.product.imgData!=null" class="img-fluid" alt="" width="360px" height="640px">
                       <a>
+
                         <div class="mask waves-effect waves-light" mdbRippleRadius></div>
                       </a>
                     </div>
@@ -73,12 +76,9 @@
                         <a placement="top" mdbTooltip="Add to Cart" container="body" (click)="addToCart(product)">
                           <i class="fa fa-shopping-cart"></i>
                         </a>
-                         <a placement="top" mdbTooltip="Remove Product" container="body" *ngIf="authService.isAdmin()"
-        (click)="removeProduct(product.id)">
-       <i class="fa fa-trash"></i>
-     </a>
+
         
-                        <a placement="top" mdbTooltip="Remove Product" container="body"  
+                        <a placement="top" mdbTooltip="Remove Product" container="body"  *ngIf="authService.isAdmin()"
                            (click)="removeProduct(product.product.id)">
                           <i class="fa fa-trash"></i>
                         </a>

@@ -7,6 +7,7 @@ import { ProductF } from 'src/app/shared/models/productF';
 import { Observable } from 'rxjs';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 import { TranslateService } from "../../../shared/services/translate.service";
+
 declare var toastr: any;
 @Component({
 	selector: 'app-product-list',
@@ -17,7 +18,7 @@ declare var toastr: any;
 export class ProductListComponent implements OnInit{
 	productList: ProductsSeller[];
 	loading = false;
-	brands = ['All', 'FISH', 'SHEEP','MEAT'];
+  brands = ['All', 'FISH', 'SHEEP', 'MEAT','CLEANING'];
    imageUrl;
 	selectedBrand: 'All';
 
@@ -25,7 +26,7 @@ export class ProductListComponent implements OnInit{
 	page = 1;
 	constructor(
       public authService: AuthServiceLocal,
-		private productService: ProductService,
+      private productService: ProductService,
       private toastrService: ToastrService, public translate: TranslateService
 	) { }
 

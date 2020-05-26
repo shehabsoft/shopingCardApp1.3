@@ -5,7 +5,8 @@ import { AuthServiceLocal } from './auth.service.local';
 import { ToastrService } from './toastr.service';
 import { Observable } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { HttpClient, HttpRequest, HttpHeaders, HttpEvent } from '@angular/common/http';
 import { ProductF } from '../models/productF';
 import { EventEmitter } from 'events';
 import { Order } from '../models/order';
@@ -20,7 +21,7 @@ const httpOptions = {
     'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'} )
 };
-const apiUrl = Constant.API_ENDPOINT+"/Product/ ";
+const apiUrl = Constant.API_ENDPOINT+"Product/";
 
 @Injectable()
 export class ProductService {
@@ -39,7 +40,7 @@ export class ProductService {
 	constructor(
 		private db: AngularFireDatabase,
 		private authService: AuthServiceLocal,
-      private toastrService: ToastrService, private http: HttpClient 
+      private toastrService: ToastrService, private http: HttpClient
 	) {
 		
       this.getProducts().subscribe((heros) => {
@@ -71,11 +72,13 @@ export class ProductService {
 		////this.products = this.db.list('products');
       // return this.products;
     this.productsObs = this.getProducts1();
+   
     this.productsObs.subscribe(heros => {
       localStorage.setItem('item_list', JSON.stringify(heros));
+      console.log("products List " + JSON.stringify(heros));
     });
 
-        
+    console.log("products List " + this.productsObs);
       return this.productsObs;
   }
   getLocalProductById(id:number): ProductsSeller {
@@ -112,6 +115,30 @@ export class ProductService {
   
    
   }
+  createProductFinal(data: FormData): Observable<any>{
+    console.log("Before Creation")
+    let product: ProductF ;
+    console.log(data);
+    const req = new HttpRequest('POST', apiUrl+'upload', data);
+
+
+    return this.http.request(req).pipe(
+      tap(heros => {
+        
+        this.getProducts().subscribe((heros) => {
+          this.products = heros
+        });
+
+      }
+
+      )
+
+
+    );
+        
+    
+
+  }
   createProduct(data: ProductF) {
 
      return  this.createProduct1(data);
@@ -130,10 +157,10 @@ export class ProductService {
 	//	this.products.update(data.$key, data);
 	}
 
-  deleteProduct(key: string): Observable<Product> {
-    const url = Constant.API_ENDPOINT+'/ Product / ${ key }';
+  deleteProduct(key: string): Observable<ProductF> {
+    const url = `${apiUrl}${key}`;
 
-      return this.http.delete<Product>(url, httpOptions).pipe(
+      return this.http.delete<ProductF>(url, httpOptions).pipe(
         tap(_ => {
 
           console.log(`deleted product id=${key}`);

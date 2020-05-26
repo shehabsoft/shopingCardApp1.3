@@ -11,8 +11,11 @@ export class ProductF {
   details: string;
   updated_at: Date;
   imgUrl: string;
-  img_data: Blob;
+  file: FormData;
   category: string;
+  imgData: Blob;
   cleaningFee: CleaningFee;
   user: User;
+
+
 }
