@@ -262,8 +262,8 @@ export class ProductService {
 	removeLocalCartProduct(product: Product) {
       const products: ProductsSeller[] = JSON.parse(localStorage.getItem('avct_item'));
 
-		for (let i = 0; i < products.length; i++) {
-			if (products[i].product.id === product.productId) {
+      for (let i = 0; i < products.length; i++) {
+        if (products[i].product.id === product.id) {
 				products.splice(i, 1);
 				break;
 			}

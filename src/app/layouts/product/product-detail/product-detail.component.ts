@@ -5,6 +5,7 @@ import { ProductService } from '../../../shared/services/product.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { ProductF } from 'src/app/shared/models/productF';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
+import { AuthServiceLocal } from 'src/app/shared/services/auth.service.local';
 
 @Component({
 	selector: 'app-product-detail',
@@ -18,7 +19,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 	constructor(
 		private route: ActivatedRoute,
 		private productService: ProductService,
-      private toastrService: ToastrService
+      private toastrService: ToastrService,
+      public authService: AuthServiceLocal
      
 	) {
 		this.product = new ProductF();

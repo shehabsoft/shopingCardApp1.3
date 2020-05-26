@@ -21,8 +21,8 @@
               </div>
               <span class="text-muted" style="color:crimson !important">
            
-                 
-                  <a [routerLink]="['/users/user', productSeller.user.id]" > {{productSeller.user.name}}</a>
+                <a *ngIf="!authService.isAdmin()" style="color:blueviolet"> {{productSeller.user.name}} </a>
+                  <a [routerLink]="['/users/user', productSeller.user.id]" *ngIf="authService.isAdmin()"> {{productSeller.user.name}}</a>
 
               </span>
             </li>
