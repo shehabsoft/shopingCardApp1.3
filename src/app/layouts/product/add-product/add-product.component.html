@@ -85,23 +85,23 @@
                   Upload progress: {{ fileUploadProgress }}
                 </div>
                 <div class="image-preview mb-3" *ngIf="previewUrl">
-                  <img [src]="previewUrl" height="300" />
+                  <img [src]="previewUrl" height="300" width="100%" />
                 </div>
 
                 <div class="mb-3" *ngIf="uploadedFilePath">
                   {{uploadedFilePath}}
                 </div>
-
+                <hr class="mb-4">
                 <div class="form-group">
-                  <button class="btn btn-primary" (click)="onSubmit(addProductForm)">Submit</button>
+                  <button class="btn btn-primary" (click)="onSubmit(addProductForm)">Add Product</button>
                 </div>
               </div>
             </div>
      
           
        
-          <hr class="mb-4">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Add Product</button>
+    
+       
         </form>
       </div>
     </div>
