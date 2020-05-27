@@ -28,7 +28,9 @@
           <!--Card image-->
           <a [routerLink]="['/products/product', product.product.id]">
             <div class="view overlay hm-white-slight">
-              <img [src]=" product.product.imgUrl" class="img-fluid" alt="" width="360px" height="640px">
+            
+              <img src="data:image/png;base64,{{product.imgData}}" [alt]="product.nameAr" *ngIf="product.imgData!=null" class="img-fluid rounded" alt="" width="360px" height="640px">
+              <img [src]="product.imgUrl" [alt]="product.nameAr" width="360px" height="640px" *ngIf="product.imgUrl!=null" class="img-fluid rounded">
               <a>
                 <div class="mask waves-effect waves-light" mdbRippleRadius></div>
               </a>
