@@ -22,7 +22,7 @@ const httpOptions = {
     'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
   })
 };
-const apiUrl = Constant.API_ENDPOINT+"/Order/";
+const apiUrl = Constant.API_ENDPOINT+"Order/";
 
 @Injectable()
 export class OrderService {
