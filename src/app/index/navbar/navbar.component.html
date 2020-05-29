@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
 
   <!-- Navbar brand -->
-  <a class="navbar-brand" href="https://smart-services.me">Smart Services</a>
+  <a class="navbar-brand" href="https://smart-services.me"> {{this.translate.data["SMART-SERVICES"] | translate}}</a>
 
   <!-- Collapse button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -150,9 +150,7 @@
         <a class="nav-link" (click)="logout()">
           <i class="fa fa-sign-in mr-1"></i>{{this.translate.data["LOGOUT"] | translate}}</a>
       </li>
-      <li class="nav-item">
-        <a href="javascript:;;" class="nav-link">Beta Versionif</a>
-      </li>
+      
     </ul>
   </div>
   <!-- Collapsible content -->

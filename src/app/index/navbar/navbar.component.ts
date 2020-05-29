@@ -28,7 +28,10 @@ export class NavbarComponent implements OnInit {
     // console.log(translate.data);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.setLang('ar');
+
+  }
   logout() {
     this.authService.logout();
     this.router.navigate(["/"]);
