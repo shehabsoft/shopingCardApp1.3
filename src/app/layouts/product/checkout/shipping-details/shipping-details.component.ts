@@ -9,6 +9,7 @@ import { ProductService } from '../../../../shared/services/product.service';
 import { ProductF } from 'src/app/shared/models/productF';
 import { Billing } from 'src/app/shared/models/billing';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
+import { TranslateService } from 'src/app/shared/services/translate.service';
 @Component({
 	selector: 'app-shipping-details',
 	templateUrl: './shipping-details.component.html',
@@ -25,7 +26,8 @@ export class ShippingDetailsComponent implements OnInit {
       authService: AuthServiceLocal,
 		private shippingService: ShippingService,
 		private productService: ProductService,
-		private router: Router
+      private router: Router
+        , public translate: TranslateService
 	) {
 		/* Hiding products Element */
 		document.getElementById('productsTab').style.display = 'none';

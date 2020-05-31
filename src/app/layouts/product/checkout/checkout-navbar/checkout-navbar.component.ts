@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { TranslateService } from "src/app/shared/services/translate.service";
 
 @Component({
   selector: "app-checkout-navbar",
@@ -6,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./checkout-navbar.component.scss"]
 })
 export class CheckoutNavbarComponent implements OnInit {
-  constructor() {}
+  constructor( public translate: TranslateService) {}
 
   ngOnInit() {}
 }

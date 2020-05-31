@@ -14,5 +14,14 @@
   "SHEEP": "Mutton",
   "BRAND": "Marque",
   "CLEANING": "Nettoyage",
-  "SMART-SERVICES": "Services intelligents"
+  "SMART-SERVICES": "Services intelligents",
+  "SIGN": "Sign In",
+  "LOGIN-FACEBOOK": "Sign in with FaceBook ",
+  "PASSWORD": " Password",
+  "EMAIL": "Email ",
+
+  "NEW-USER": "New User ",
+
+
+  "REGISTER": "تسجيل"
 }

@@ -14,5 +14,10 @@
   "SHEEP": "羊",
   "BRAND": "ブランド",
   "CLEANING": "クリーニング",
-  "SMART-SERVICES": "スマートサービス"
+  "SMART-SERVICES": "スマートサービス",
+  "SIGN": "Sign In",
+  "LOGIN-FACEBOOK": "Sign in with FaceBook ",
+  "PASSWORD": " Password",
+  "EMAIL": "Email ",
+  "NEW-USER": "New User "
 }

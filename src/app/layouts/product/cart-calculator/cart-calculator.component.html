@@ -1,5 +1,5 @@
 <h4 class="d-flex justify-content-between align-items-center mb-3">
-  <span class="text-muted">Your cart</span>
+  <span class="text-muted">{{translate.data["YOUR-CARD"] | translate}}</span>
   <span class="badge badge-primary badge-pill">{{products.length}}</span>
 </h4>
 <ul class="list-group mb-3">
@@ -11,10 +11,10 @@
   </li>
   <hr>
   <li class="list-group-item d-flex justify-content-between">
-    <span>Total (EGP)</span>
+    <span>{{translate.data["TOTAL"] | translate}} (EGP)</span>
     <strong>EGP {{totalValue}}</strong>
   </li>
-  <a class="btn btn-primary" [routerLink]="['/products/all-products']">Continue Shipping</a>
-  <a class="btn btn-default" [routerLink]="['/checkouts']">Checkout</a>
+  <a class="btn btn-primary" [routerLink]="['/products/all-products']">{{translate.data["CONTINUE_SHIPING"] | translate}}</a>
+  <a class="btn btn-default" [routerLink]="['/checkouts']">{{translate.data["CKECKOUT"] | translate}}</a>
 
 </ul>

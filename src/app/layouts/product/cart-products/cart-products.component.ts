@@ -5,6 +5,7 @@ import { ProductF } from 'src/app/shared/models/productF';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 import { CleaningFee } from 'src/app/shared/models/cleaningFee';
 import { forEach } from '@angular/router/src/utils/collection';
+import { TranslateService } from 'src/app/shared/services/translate.service';
 @Component({
 	selector: 'app-cart-products',
 	templateUrl: './cart-products.component.html',
@@ -19,7 +20,7 @@ export class CartProductsComponent implements OnInit {
 	messageTitle = 'No Products Found in Cart';
 	messageDescription = 'Please, Add Products to Cart';
 
-	constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, public translate: TranslateService) {}
 
   ngOnInit() {
 

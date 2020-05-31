@@ -6,6 +6,7 @@ import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { ProductF } from 'src/app/shared/models/productF';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 import { AuthServiceLocal } from 'src/app/shared/services/auth.service.local';
+import { TranslateService } from 'src/app/shared/services/translate.service';
 
 @Component({
 	selector: 'app-product-detail',
@@ -15,15 +16,17 @@ import { AuthServiceLocal } from 'src/app/shared/services/auth.service.local';
 export class ProductDetailComponent implements OnInit, OnDestroy {
 	private sub: any;
   product: ProductF;
+ 
   productSeller: ProductsSeller;
 	constructor(
 		private route: ActivatedRoute,
 		private productService: ProductService,
       private toastrService: ToastrService,
-      public authService: AuthServiceLocal
+      public authService: AuthServiceLocal,public translate: TranslateService
      
 	) {
-		this.product = new ProductF();
+      this.product = new ProductF();
+     
 	}
 
 	ngOnInit() {

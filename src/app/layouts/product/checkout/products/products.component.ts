@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Product } from '../../../../shared/models/product';
 import { ProductF } from 'src/app/shared/models/productF';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
+import { TranslateService } from 'src/app/shared/services/translate.service';
 
 @Component({
 	selector: 'app-products',
@@ -14,7 +15,7 @@ export class ProductsComponent implements OnInit {
   totalCleaning = 0;
   totalPrice = 0;
   totalPacakging = 0;
-	constructor(productService: ProductService) {
+  constructor(productService: ProductService, public translate: TranslateService) {
 		document.getElementById('shippingTab').style.display = 'none';
 		document.getElementById('billingTab').style.display = 'none';
 		document.getElementById('resultTab').style.display = 'none';

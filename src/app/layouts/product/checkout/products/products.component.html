@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [style.direction]="translate.style">
   <ul class="list-group mb-3">
     <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of checkoutProducts">
       <div>
@@ -10,31 +10,31 @@
         <img src="data:image/png;base64,{{product.product.imgData}}" *ngIf="product.product.imgData!=null" class="img-fluid" alt="" width="150" height="100">
       </div>
       <div style="padding: 10px">
-        <h6 class=" my-0 ">{{product.product.nameAr}}</h6>
-        <p>Product Seller : {{product.user.name}} </p>
-        <span class="text-muted ">quantity ({{product.product.quantity}}) Total  {{product.product.price*product.product.quantity}} EGP</span>
+        <p> <span class="text-muted ">{{translate.data["PRODUCT-NAME"] | translate}}</span> :{{product.product.nameAr}}</p>
+        <p> <span class="text-muted ">{{translate.data["PRODUCT-SELLER"] | translate}} </span>: {{product.user.name}} </p>
+        <span class="text-muted ">{{translate.data["QUANTITY"] | translate}} ({{product.product.quantity}}) {{translate.data["TOTAL"] | translate}}  {{product.product.price*product.product.quantity}} EGP</span>
       </div>
-      <span class="text-muted ">Unit Price   {{product.product.price}} EGP</span>
-      <span class="text-muted ">Cleaning   {{product.product.cleaningFee.feesNameAr}} {{product.product.cleaningFee.feeAmount}} EGP </span>
+      <span class="text-muted ">{{translate.data["UNIT-PRICE"] | translate}} : {{product.product.price}} EGP</span>
+      <span class="text-muted ">{{translate.data["CLEANING-TECHNIQUE"] | translate}}   : {{product.product.cleaningFee.feesNameAr}} {{product.product.cleaningFee.feeAmount}} EGP </span>
 
     </li>
     <hr>
     <li class="list-group-item d-flex justify-content-between ">
-      <span>Cleaning (EGP)</span>
+      <span>{{translate.data["CLEANING-TECHNIQUE"] | translate}}  </span>
       <strong>EGP {{totalCleaning}}</strong>
     </li>
     <li class="list-group-item d-flex justify-content-between ">
-      <span>Packaging (EGP)</span>
+      <span>{{translate.data["PACKGANING"] | translate}}  </span>
       <strong>EGP {{ totalPacakging}}</strong>
     </li>
     <li class="list-group-item d-flex justify-content-between ">
-      <span>Total (EGP)</span>
+      <span>{{translate.data["TOTAL"] | translate}}  (EGP)</span>
       <strong>EGP {{totalPrice}}</strong>
     </li>
 
   </ul>
     <div class="float-right">
-        <a class="btn btn-default " [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['shipping-details']}}]" routerLinkActive="active">Next</a>
+      <a class="btn btn-default " [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['shipping-details']}}]" routerLinkActive="active">{{translate.data["NEXT"] | translate}}</a>
     </div>
 
 </div>

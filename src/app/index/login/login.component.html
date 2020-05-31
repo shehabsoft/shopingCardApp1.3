@@ -7,25 +7,25 @@
   <br />
   <div class="col-sm-4" style="float: left;">
     <form style="width:22rem" #loginForm="ngForm" (ngSubmit)="signInWithEmail(loginForm)">
-      <p class="h5 text-center mb-4">Sign in</p>
+      <p class="h5 text-center mb-4">    {{translate.data["LOGIN"] | translate}}</p>
 
       <div class="form-group">
-        <label for="loginEmailId">Email address</label>
+        <label for="loginEmailId">{{translate.data["EMAIL"] | translate}}</label>
         <input type="email" class="form-control" id="loginEmailId" aria-describedby="emailHelp" placeholder="Enter email"
                name="emailId" [(ngModel)]="user1.emailId" mdbInputValidate [email]="true">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
+        <label for="exampleInputPassword1">   {{translate.data["PASSWORD"] | translate}}</label>
         <input type="password" class="form-control" id="loginPassword" name="loginPassword" [(ngModel)]="user1.loginPassword"
                autocomplete="current-password" placeholder="Password">
       </div>
 
       <div class="text-center">
-        <button type="submit" class="btn btn-primary waves-light" id="loginButton" mdbRippleRadius>Login</button>
+        <button type="submit" class="btn btn-primary waves-light" id="loginButton" mdbRippleRadius>{{translate.data["LOGIN"] | translate}}</button>
 
         <button type="button" class="btn btn-primary waves-light" (click)="facebookLogin()">
           <i class="fa fa-facebook" aria-hidden="true"></i>
-          Sign in
+          {{translate.data["LOGIN-FACEBOOK"] | translate}}
         </button>
 
       </div>
@@ -33,8 +33,9 @@
   </div>
 
   <br>
-  <p>New User ?
-    <a data-toggle="modal" data-target="#createUserForm" style="color:dodgerblue">Register here!</a>
+  <p>
+    {{translate.data["NEW-USER"] | translate}}?
+    <a data-toggle="modal" data-target="#createUserForm" style="color:dodgerblue"> {{translate.data["REGISTER"] | translate}}</a>
   </p>
      
   <!-- Login form -->

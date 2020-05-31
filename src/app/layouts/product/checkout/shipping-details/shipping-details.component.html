@@ -1,10 +1,10 @@
-<div class="container mt-3">
+<div class="container mt-3"  [style.direction]="translate.style">
   <div class="col-md order-md-1">
-    <h4 class="mb-3">Shipping Address    </h4>
+    <h4 class="mb-3">{{translate.data["SHIPING-ADDRESS"] | translate}}    </h4>
     <form class="needs-validation" #userDetailsForm="ngForm" (ngSubmit)="updateUserDetails(userDetailsForm)">
-      <div class="row">
+      <div class="row" [style.direction]="translate.style">
         <div class="col-md-6 mb-3">
-          <label for="firstName">Full Name</label>
+          <label for="firstName">{{translate.data["FULL-NAME"] | translate}}</label>
           <input type="text" class="form-control" id="firstName" [(ngModel)]="user.name" name="firstName" [disabled]="true"
                  required>
           <div class="invalid-feedback">
@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="col-md-6 mb-3">
-          <label for="lastName">Mobile Number</label>
+          <label for="lastName">{{translate.data["MOBILE-NUMBER"] | translate}}</label>
           <input type="text" class="form-control" id="lastName" [(ngModel)]="user.mobileNumber" name="mobileNumber" [disabled]="true"
                  required>
           <div class="invalid-feedback">
@@ -23,8 +23,8 @@
 
       <div class="mb-3">
         <label for="email">
-          Email
-          <span class="text-muted">(Optional)</span>
+          {{translate.data["EMAIL"] | translate}}
+          
         </label>
         <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" [disabled]="true">
         <div class="invalid-feedback">
@@ -33,7 +33,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="address">Address</label>
+        <label for="address">{{translate.data["ADDRESS"] | translate}}</label>
         <input type="text" class="form-control" id="address" placeholder="1234 Main St" [(ngModel)]="user.address" [disabled]="true"
                name="address1" required>
         <div class="invalid-feedback">
@@ -43,7 +43,7 @@
 
       <div class="mb-3">
         <label for="address2">
-          Address 2
+          <label for="address">{{translate.data["ADDRESS"] | translate}}</label>
           <span class="text-muted">(Optional)</span>
         </label>
         <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" [(ngModel)]="userDetail.address2"
@@ -51,8 +51,8 @@
       </div>
       <div class="mb-3">
         <label for="address2">
-          Shiping
-          (Fees)   +30 EGP inside  <span class="text-muted">(Naser City -Fifth Statement )</span>
+
+          <span class="text-muted"> {{translate.data["SHIPING-FEES"] | translate}} :   </span> +30 (EGP)
         </label>
 
 
@@ -91,6 +91,6 @@
    </div>
       -->
       <hr class="mb-4">
-      <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+      <button class="btn btn-primary btn-lg btn-block" type="submit">{{translate.data["NEXT"] | translate}}</button>
     </form>
   </div>

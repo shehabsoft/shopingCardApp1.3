@@ -10,6 +10,7 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider
 } from 'angular5-social-login';
+import { TranslateService } from "src/app/shared/services/translate.service";
 declare var $: any;
 @Component({
 	selector: "app-login",
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
 		private userService: UserService,
 		private toastService: ToastrService,
 		private router: Router,
-      private route: ActivatedRoute, private socialAuthService: AuthService
+      private route: ActivatedRoute, private socialAuthService: AuthService, public translate: TranslateService
     ) {
       console.log("User Componenets ");
 		this.createUser = new User();

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges } from
 import { Product } from '../../../shared/models/product';
 import { ProductF } from 'src/app/shared/models/productF';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
+import { TranslateService } from 'src/app/shared/services/translate.service';
 
 @Component({
 	selector: 'app-cart-calculator',
@@ -12,7 +13,7 @@ export class CartCalculatorComponent implements OnInit, OnChanges {
   @Input() products: ProductsSeller[];
 
 	totalValue = 0;
-	constructor() {}
+  constructor(public translate: TranslateService) {}
 
 	ngOnChanges(changes: SimpleChanges) {
 		const dataChanges: SimpleChange = changes.products;

@@ -14,5 +14,39 @@
   "SHEEP": "الخرفان والماعز",
   "BRAND": "العلامة التجارية",
   "CLEANING": "المنظفات",
-  "SMART-SERVICES": "الخدمات الذكية "
+  "SMART-SERVICES": "الخدمات الذكية ",
+  "LOGIN": "الدخول ",
+  "LOGIN-FACEBOOK": "الدخول عبر الفيس بوك  ",
+  "PASSWORD": "الرمز السري",
+  "EMAIL": "البريد الالكتروني",
+  "NEW-USER": "مستخدم جديد ",
+
+  "REGISTER": "تسجيل",
+  "PRODUCT-PRICE": "سعر المنتج ",
+  "PRODUCT-SELLER": "اسم البائع  ",
+  "ADD-CARD": "اضافة الي السلة ",
+  "PRODUCT-DETAILS": "تفاصيل المنتج",
+  "PRODUCT-NAME": "اسم المنتج",
+  "PRODUCT-DESCRIPTION": "تفاصيل المنتج",
+  "PRODUCT-CATEGORY": "نوع المنتج ",
+  "PRODUCT-DATE": "تم الاضافة بتاريخ ",
+  "LANG": "ar",
+  "QUANTITY": "الكمية",
+  "CLEANING-TECHNIQUE": "طريقة التحضير ",
+  "YOUR-CARD": "سله شرائك",
+  "TOTAL": "الاجمالي",
+  "CONTINUE_SHIPING": " التسوق",
+  "CKECKOUT": "الدفع",
+  "UNIT-PRICE": "سعر الوحدة",
+  "PACKGANING": "التغليف",
+  "NEXT": "التالي",
+  "CHECKOUT-PRODUCTS": "متابعة علي المنتجات",
+  "SHIPING-ADDRESS": "عنوان الشحن",
+  "FULL-NAME": "الاسم بالكامل",
+  "MOBILE-NUMBER": "رقم الموبايل",
+  "ADDRESS": "عنوان السكن",
+  "SHIPING-FEES": "مصاريف التوصيل"
+
+
+
 }

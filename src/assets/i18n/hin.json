@@ -14,5 +14,13 @@
   "SHEEP": "Mutton",
   "BRAND": "牌",
   "CLEANING": "सफाई",
-  "SMART-SERVICES": "स्मार्ट सेवाएं"
+  "SMART-SERVICES": "स्मार्ट सेवाएं",
+  "SIGN": "Sign In",
+  "LOGIN-FACEBOOK": "Sign in with FaceBook ",
+  "PASSWORD": " Password",
+  "EMAIL": "Email ",
+  "NEW-USER": "New User ",
+
+
+  "REGISTER": "تسجيل"
 }
