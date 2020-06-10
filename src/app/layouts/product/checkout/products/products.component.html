@@ -1,23 +1,32 @@
 <div class="container" [style.direction]="translate.style">
   <ul class="list-group mb-3">
     <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of checkoutProducts">
-      <div>
+      <div class=" mb-r">
+
+        <!--Card-->
+        <div class="card card-cascade wider">
 
 
 
-        <img [src]="product.product.imgUrl" [alt]="ddd" width="150" *ngIf="product.product.imgUrl!=null" height="100">
+          <img [src]="product.product.imgUrl" [alt]="ddd" width="150" *ngIf="product.product.imgUrl!=null" width="360px" height="360px">
 
-        <img src="data:image/png;base64,{{product.product.imgData}}" *ngIf="product.product.imgData!=null" class="img-fluid" alt="" width="150" height="100">
-      </div>
-      <div style="padding: 10px">
-        <p> <span class="text-muted ">{{translate.data["PRODUCT-NAME"] | translate}}</span> :{{product.product.nameAr}}</p>
-        <p> <span class="text-muted ">{{translate.data["PRODUCT-SELLER"] | translate}} </span>: {{product.user.name}} </p>
-        <span class="text-muted ">{{translate.data["QUANTITY"] | translate}} ({{product.product.quantity}}) {{translate.data["TOTAL"] | translate}}  {{product.product.price*product.product.quantity}} EGP</span>
-      </div>
-      <span class="text-muted ">{{translate.data["UNIT-PRICE"] | translate}} : {{product.product.price}} EGP</span>
-      <span class="text-muted ">{{translate.data["CLEANING-TECHNIQUE"] | translate}}   : {{product.product.cleaningFee.feesNameAr}} {{product.product.cleaningFee.feeAmount}} EGP </span>
+          <img src="data:image/png;base64,{{product.product.imgData}}" *ngIf="product.product.imgData!=null" class="img-fluid" alt="" width="360px" height="360px">
 
-    </li>
+          <div class="card-body text-center no-padding">
+            <p> <span class="text-muted ">{{translate.data["PRODUCT-NAME"] | translate}}</span> :{{product.product.nameAr}}</p>
+            <p> <span class="text-muted ">{{translate.data["PRODUCT-SELLER"] | translate}} </span>: {{product.user.name}} </p>
+            <p>
+
+              <span class="text-muted ">{{translate.data["QUANTITY"] | translate}} ({{product.product.quantity}}) {{translate.data["TOTAL"] | translate}}  {{product.product.price*product.product.quantity}} EGP</span>
+            </p>
+
+            <p>
+              <span class="text-muted ">{{translate.data["UNIT-PRICE"] | translate}} : {{product.product.price}} EGP</span></p>
+            <p><span class="text-muted ">{{translate.data["CLEANING-TECHNIQUE"] | translate}}   : {{product.product.cleaningFee.feesNameAr}} {{product.product.cleaningFee.feeAmount}} EGP </span></p>
+          </div>
+          </div>
+        </div>
+</li>
     <hr>
     <li class="list-group-item d-flex justify-content-between ">
       <span>{{translate.data["CLEANING-TECHNIQUE"] | translate}}  </span>
