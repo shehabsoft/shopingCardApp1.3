@@ -11,7 +11,9 @@ import {
   GoogleLoginProvider
 } from 'angular5-social-login';
 import { TranslateService } from "src/app/shared/services/translate.service";
+ 
 declare var $: any;
+
 @Component({
 	selector: "app-login",
 	templateUrl: "./login.component.html",
@@ -32,7 +34,7 @@ export class LoginComponent implements OnInit {
       private authService: AuthServiceLocal,
 		private userService: UserService,
 		private toastService: ToastrService,
-		private router: Router,
+      private router: Router, 
       private route: ActivatedRoute, private socialAuthService: AuthService, public translate: TranslateService
     ) {
       console.log("User Componenets ");
@@ -129,5 +131,16 @@ export class LoginComponent implements OnInit {
 			.catch((err) => {
 				this.toastService.error("Error Occured", "Please try again later");
 			});
-	}
+  }
+  download() {
+    //console.log('download file');
+   // this.fileService.downloadFile().subscribe(response => {
+      //let blob:any = new Blob([response.blob()], { type: 'text/json; charset=utf-8' });
+      //const url= window.URL.createObjectURL(blob);
+      //window.open(url);
+    //  window.location.href = response.url;
+      //fileSaver.saveAs(blob, 'employees.json');
+   // }), error => console.log('Error downloading the file'),
+    //  () => console.info('File downloaded successfully');
+  }
 }
