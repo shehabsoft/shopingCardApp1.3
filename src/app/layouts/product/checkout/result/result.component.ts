@@ -23,6 +23,7 @@ export class ResultComponent implements OnInit {
   totalPrice = 0;
   tax = 30;
   order: Order;
+  totalCleaningFee = 0;
   orderObservable: Observable<Order>;
   constructor(private productService: ProductService, private orderService: OrderService, private router: Router) {
     /* Hiding Billing Tab Element */
@@ -31,7 +32,11 @@ export class ResultComponent implements OnInit {
     document.getElementById('billingTab').style.display = 'none';
     document.getElementById('resultTab').style.display = 'block';
 
-    this.products = productService.getLocalCartProducts();
+   
+  }
+
+  ngOnInit() {
+    this.products = this.productService.getLocalCartProducts();
 
     let total = 0;
     let totalPacakging = 0;
@@ -46,11 +51,10 @@ export class ResultComponent implements OnInit {
 
     });
     this.totalPrice += total + totalCleaning + totalPacakging;
-
+    this.totalCleaningFee = totalCleaning;
     this.date = Date.now();
-  }
 
-  ngOnInit() { }
+  }
   completeOrder() {
 
     console.log("begin observable");
