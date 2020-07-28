@@ -29,7 +29,7 @@ const httpOptions = {
 };
 declare var $: any;
 declare var toastr: any;
-const apiUrl = Constant.API_ENDPOINT + "/Order/";
+const apiUrl = Constant.API_ENDPOINT + "Order/";
 @Injectable({
   providedIn: "root"
 })
