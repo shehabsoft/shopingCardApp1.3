@@ -109,8 +109,7 @@ export class LoginComponent implements OnInit {
         document.getElementById('loading').style.display = 'none';
        
         document.getElementById("sentMailButton").setAttribute('disabled', 'false');
-        var modal = document.getElementsByClassName("modal - backdrop fade show");
-        modal.style.display = 'none';
+     
          
       },
         err => {
