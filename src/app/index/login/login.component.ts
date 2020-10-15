@@ -92,7 +92,34 @@ export class LoginComponent implements OnInit {
             this.toastService.error("Error while Creating User", err);
           });
 			 
-	}
+  }
+
+  forgetPassword(userForm: NgForm) {
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById("sentMailButton").setAttribute('disabled', 'true');
+ 
+    this.authService
+      .forgetPassword(userForm.value["emailId"])
+      .subscribe((res) => {
+
+
+        //	this.userService.createUser(user);
+
+        this.toastService.success("Forget Password", "Password Sent Succuessfully to Your Mail");
+        document.getElementById('loading').style.display = 'none';
+       
+        document.getElementById("sentMailButton").setAttribute('disabled', 'false');
+        var modal = document.getElementsByClassName("modal - backdrop fade show");
+        modal.style.display = 'none';
+         
+      },
+        err => {
+          this.errorInUserCreate = true;
+          this.errorMessage = err;
+          this.toastService.error("Error Sending Mail", err);
+        });
+
+  }
 
   signInWithEmail(userForm: NgForm) {
     console.log("Being SSSS Login ");

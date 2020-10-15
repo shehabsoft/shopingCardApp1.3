@@ -66,6 +66,23 @@ export class AuthServiceLocal {
   
     
   }
+  forgetPassword(email: string): Observable<User> {
+    console.log("calling Backend Sign In "); 
+    this.userLogin.email = email;
+    const url = Constant.API_ENDPOINT + 'User/forgetPassword/';
+    return this.http.post<User>(url, this.userLogin.email, httpOptions).pipe(
+      tap(herso => {
+        console.log(herso);
+        this.userLogin = herso
+      },
+        err => console.log(err))
+
+
+
+    );
+
+
+  }
   getSellerAccountById(id: number): Observable<User> {
     console.log("calling Backend getSellerAccountById ");
     const url = Constant.API_ENDPOINT + id;
