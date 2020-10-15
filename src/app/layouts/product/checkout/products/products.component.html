@@ -21,13 +21,14 @@
             </p>
 
             <p>
-              <span class="text-muted ">{{translate.data["UNIT-PRICE"] | translate}} : {{product.product.price}} EGP</span></p>
+              <span class="text-muted ">{{translate.data["UNIT-PRICE"] | translate}} : {{product.product.price}} EGP</span>
+            </p>
             <p><span class="text-muted ">{{translate.data["CLEANING-TECHNIQUE"] | translate}}   : {{product.product.cleaningFee.feesNameAr}} {{product.product.cleaningFee.feeAmount}} EGP </span></p>
           </div>
-          </div>
         </div>
-</li>
-    <hr>
+      </div>
+    </li>
+   
     <li class="list-group-item d-flex justify-content-between ">
       <span>{{translate.data["CLEANING-TECHNIQUE"] | translate}}  </span>
       <strong>EGP {{totalCleaning}}</strong>
@@ -36,14 +37,16 @@
       <span>{{translate.data["PACKGANING"] | translate}}  </span>
       <strong>EGP {{ totalPacakging}}</strong>
     </li>
+
     <li class="list-group-item d-flex justify-content-between ">
       <span>{{translate.data["TOTAL"] | translate}}  (EGP)</span>
       <strong>EGP {{totalPrice}}</strong>
     </li>
 
   </ul>
-    <div class="float-right">
-      <a class="btn btn-default " [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['shipping-details']}}]" routerLinkActive="active">{{translate.data["NEXT"] | translate}}</a>
-    </div>
+
+  <div class="mb-4">
+    <a class="btn btn-success btn-lg btn-block" [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['shipping-details']}}]" routerLinkActive="active">{{translate.data["NEXT"] | translate}}</a>
+  </div>
 
 </div>

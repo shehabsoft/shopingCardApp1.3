@@ -24,7 +24,7 @@
       <div class="mb-3">
         <label for="email">
           {{translate.data["EMAIL"] | translate}}
-          
+
         </label>
         <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" [disabled]="true">
         <div class="invalid-feedback">
@@ -58,39 +58,40 @@
 
       </div>
       <!-- <div class="row">
-     <div class="col-md-5 mb-3">
-       <label for="country">Governement</label>
-       <select class="custom-select d-block w-100" id="country" required [(ngModel)]="userDetail.country" name="country">
-         <option value="">Choose...</option>
-         <option>Assiut</option>
-         <option>Cairo</option>
-         <option>Suez</option>
-       </select>
-       <div class="invalid-feedback">
-         Please select a valid country.
-       </div>
-     </div>
-     <div class="col-md-4 mb-3">
-       <label for="state">State</label>
-       <select class="custom-select d-block w-100" id="state" [(ngModel)]="userDetail.state" name="state" required>
-         <option value="">Choose...</option>
-         <option>California</option>
-       </select>
-       <div class="invalid-feedback">
-         Please provide a valid state.
-       </div>
-     </div>
-     <div class="col-md-3 mb-3">
-       <label for="zip">Zip</label>
-       <input type="text" class="form-control" id="zip" placeholder="" [(ngModel)]="userDetail.zip" name="zip"
-              required>
-       <div class="invalid-feedback">
-         Zip code required.
-       </div>
-     </div>
-   </div>
-      -->
+    <div class="col-md-5 mb-3">
+      <label for="country">Governement</label>
+      <select class="custom-select d-block w-100" id="country" required [(ngModel)]="userDetail.country" name="country">
+        <option value="">Choose...</option>
+        <option>Assiut</option>
+        <option>Cairo</option>
+        <option>Suez</option>
+      </select>
+      <div class="invalid-feedback">
+        Please select a valid country.
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="state">State</label>
+      <select class="custom-select d-block w-100" id="state" [(ngModel)]="userDetail.state" name="state" required>
+        <option value="">Choose...</option>
+        <option>California</option>
+      </select>
+      <div class="invalid-feedback">
+        Please provide a valid state.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="zip">Zip</label>
+      <input type="text" class="form-control" id="zip" placeholder="" [(ngModel)]="userDetail.zip" name="zip"
+             required>
+      <div class="invalid-feedback">
+        Zip code required.
+      </div>
+    </div>
+  </div>
+     -->
+      <div id="loading" class="spinner-border text-success" style="margin:auto;display:none"></div>
       <hr class="mb-4">
-      <button class="btn btn-primary btn-lg btn-block" type="submit">{{translate.data["NEXT"] | translate}}</button>
+      <button id="nextBtn" class="btn btn-primary btn-lg btn-block" type="submit">{{translate.data["NEXT"] | translate}}</button>
     </form>
   </div>

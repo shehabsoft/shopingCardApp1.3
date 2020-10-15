@@ -33,7 +33,8 @@ export class ShippingDetailsComponent implements OnInit {
 		document.getElementById('productsTab').style.display = 'none';
 		document.getElementById('shippingTab').style.display = 'block';
 		document.getElementById('productsTab').style.display = 'none';
-		document.getElementById('resultTab').style.display = 'none';
+      document.getElementById('resultTab').style.display = 'none';
+     
       this.userDetail = new UserDetail;
 	
       this.productsSeller = productService.getLocalCartProducts();
@@ -42,7 +43,9 @@ export class ShippingDetailsComponent implements OnInit {
     
 	}
 
-  ngOnInit() { }
+  ngOnInit() {
+ 
+      }
   billing: Billing;
 	updateUserDetails(form: NgForm) {
 		const data = form.value;
@@ -77,7 +80,9 @@ export class ShippingDetailsComponent implements OnInit {
       this.billing.totalPrice = totalPrice;
       this.billing.user = this.user;
       console.log(this.user);
-
+     
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById("nextBtn").setAttribute('disabled', 'true');
 
       this.shippingService.createshippings(this.billing, this.productsSeller).subscribe((response) => {
       
