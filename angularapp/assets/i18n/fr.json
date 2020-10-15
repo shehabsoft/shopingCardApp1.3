@@ -12,5 +12,17 @@
   "VIEWALL": "Voir plus",
   "FISH": "Poisson",
   "SHEEP": "Mutton",
-  "BRAND": "marque"
+  "BRAND": "Marque",
+  "CLEANING": "Nettoyage",
+  "SMART-SERVICES": "Services intelligents",
+  "SIGN": "Sign In",
+  "LOGIN-FACEBOOK": "Sign in with FaceBook ",
+  "PASSWORD": " Password",
+  "EMAIL": "Email ",
+
+  "NEW-USER": "New User ",
+
+
+  "REGISTER": "تسجيل",
+  "SWEET": "Sweet"
 }

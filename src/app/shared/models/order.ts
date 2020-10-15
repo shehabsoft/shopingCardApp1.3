@@ -11,7 +11,6 @@ export class Order {
   address1: string;
   address2: string;
   creationDate: Date;
-  country: Country;
   ordersProducts: OrdersProducts[];
   total: number;
   updateDate: Date;

@@ -70,7 +70,7 @@ export class ShippingService {
     this.country = new Country;
     this.country.id = 2;  
     this.order.status = 1;
-    this.order.country = this.country;
+    //this.order.country = this.country;
     this.order.user = data.user;
     this.order.address1 = data.user.address;
     this.order.address2 = data.userDetails.address2;

@@ -12,5 +12,46 @@
   "VIEWALL": "See More",
   "FISH": "Fish",
   "SHEEP": "Sheep",
-  "BRAND": "Brand"
+  "BRAND": "Brand",
+  "CLEANING": "Cleaning",
+  "SMART-SERVICES": "Smart Services",
+  "LOGIN": "Sign In",
+  "LOGIN-FACEBOOK": "Sign in with FaceBook ",
+  "PASSWORD": " Password",
+  "EMAIL": "Email ",
+  "NEW-USER": "New User ",
+  "REGISTER": "Register ",
+  "PRODUCT-PRICE": "Product Price",
+  "PRODUCT-SELLER": "Product Seller",
+  "ADD-CARD": "Add to Cart",
+  "PRODUCT-DETAILS": "Product Details",
+  "PRODUCT-NAME": "Product Name",
+  "PRODUCT-DESCRIPTION": "Product Description",
+  "PRODUCT-CATEGORY": "Product Category",
+  "PRODUCT-DATE": "Product Added on",
+  "LANG": "en",
+  "QUANTITY": "Quantity",
+  "CLEANING-TECHNIQUE": "Cleaning Technique",
+  "YOUR-CARD": "Your Card",
+  "TOTAL": "Total",
+  "UNIT-PRICE": "Unit Price",
+  "CONTINUE_SHIPING": "Continue Shipping",
+  "CKECKOUT": "Checkout",
+  "PACKGANING": "Packaging",
+  "NEXT": "Next",
+  "CHECKOUT-PRODUCTS": "Checking Out Products",
+  "SHIPING-ADDRESS": "Shiping Address",
+  "FULL-NAME": "Full Name",
+  "MOBILE-NUMBER": "Mobile Number",
+  "ADDRESS": "Address",
+
+  "SHIPING-FEES": " Shiping Fees",
+  "SWEET": "Sweet"
+
+
+
+
+
+
+
 }

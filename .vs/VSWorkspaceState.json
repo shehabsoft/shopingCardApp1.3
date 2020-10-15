@@ -2,16 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app\\index",
-    "\\src\\app\\layouts\\order",
-    "\\src\\app\\layouts\\product",
-    "\\src\\app\\layouts\\product\\cart-calculator",
-    "\\src\\app\\layouts\\product\\cart-products",
-    "\\src\\app\\layouts\\product\\checkout",
+    "\\src\\app",
     "\\src\\app\\shared",
-    "\\src\\app\\shared\\components",
-    "\\src\\assets\\banner_img"
+    "\\src\\app\\shared\\models"
   ],
-  "SelectedNode": "\\LICENSE",
+  "SelectedNode": "\\src\\app\\shared\\models\\constant.ts",
   "PreviewInSolutionExplorer": false
 }

@@ -44,6 +44,7 @@ export class OrderService {
 
       this.user = this.authService.getLoggedInUser();
       this.getOrders(this.user.id).subscribe((heros) => {
+        console.log("ORDER " + heros);
         this.orders = heros;
       });
     //  this.calculateLocalFavProdCounts();
