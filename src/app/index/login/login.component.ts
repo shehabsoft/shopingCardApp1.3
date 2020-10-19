@@ -108,8 +108,8 @@ export class LoginComponent implements OnInit {
         this.toastService.success("Forget Password", "Password Sent Succuessfully to Your Mail");
         document.getElementById('loading').style.display = 'none';
        
-        document.getElementById("sentMailButton").setAttribute('disabled', 'false');
-     
+        document.getElementById("sentMailButton").removeAttribute('disabled');
+        this.createUser.emailId = '';
          
       },
         err => {
