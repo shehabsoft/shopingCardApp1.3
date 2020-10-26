@@ -41,8 +41,12 @@ export class LoginComponent implements OnInit {
 		this.createUser = new User();
 	}
 
-  ngOnInit() { }
+  ngOnInit() {
 
+  }
+  public resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+  }
   public facebookLogin() {
     let socialPlatformProvider: string = FacebookLoginProvider.PROVIDER_ID;
     this.socialAuthService.signIn(socialPlatformProvider).then(
@@ -88,8 +92,8 @@ export class LoginComponent implements OnInit {
         },
           err => {
             this.errorInUserCreate = true;
-            this.errorMessage = err;
-            this.toastService.error("Error while Creating User", err);
+            this.errorMessage = err.error.message;
+            this.toastService.error("Error while Creating User", this.errorMessage);
           });
 			 
   }

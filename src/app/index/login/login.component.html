@@ -1,5 +1,5 @@
  
-<section class="container">
+<section id="container"class="container">
   <div class="col-sm-8" style="float: left;"><img src="../../../assets/img/E-CommerceRight.jpg" width="100%" /></div>
   <!-- Login form -->
   <br />
@@ -53,7 +53,7 @@
   <!--Modal: Register Form-->
   <div class="modal fade" id="createUserForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog cascading-modal" role="document">
-      <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+      <form #regForm="ngForm" (ngSubmit)="addUser(regForm)">
         <div class="modal-content">
 
           <!-- <div class="modal-header light-blue darken-3 white-text">
@@ -67,7 +67,7 @@
               -->
           <div class="modal-body">
             <div class="alert alert-danger" role="alert" *ngIf="errorInUserCreate">
-              {{errorMessage.message}}
+              {{errorMessage}}
             </div>
             <div class="form-group form-sm">
               <label for="emailId">Your email</label>
@@ -94,15 +94,17 @@
               <input mdbActive type="text" id="name" required class="form-control" name="address" [(ngModel)]="createUser.address"
                      placeholder="Home Address" mdbInputValidate autocomplete="Home">
             </div>
+            
+
+          </div>
             <div class="text-center mt-2">
               <button class="btn btn-info waves-light" id="signUpButton" mdbRippleRadius>
                 Sign up
                 <i class="fa fa-sign-in ml-1"></i>
               </button>
             </div>
-
+           
           </div>
-        </div>
       </form>
     </div>
   </div>
@@ -120,7 +122,7 @@
             </div>
             <div class="form-group form-sm">
               <label for="emailId">Your email</label>
-              <input mdbActive type="email" required id="emailId" class="form-control" name="emailId" [(ngModel)]="createUser.emailId"
+              <input mdbActive type="email"  required id="emailId" class="form-control" name="emailId" [(ngModel)]="createUser.emailId"
                      placeholder="Enter email" mdbInputValidate [email]="true" autocomplete="email">
             </div>
             <div id="loading" class="spinner-border text-success" style="margin:auto;display:none"></div>
