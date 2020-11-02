@@ -26,8 +26,12 @@ export class ProductsComponent implements OnInit {
      
       products.forEach((productSeller) => {
         this.totalPrice += productSeller.product.price * productSeller.product.quantity;
-        this.totalPacakging+= 5 * productSeller.product.quantity;
-        this.totalCleaning += productSeller.product.cleaningFee.feeAmount * productSeller.product.quantity;
+        this.totalPacakging += 5 * productSeller.product.quantity;
+        if (productSeller.product.cleaningFee.id != 0) {
+          console.log("Cleaning Fee" + productSeller.product.cleaningFee);
+          this.totalCleaning += productSeller.product.cleaningFee.feeAmount * productSeller.product.quantity;
+        } 
+       
       });
       this.totalPrice += this.totalCleaning;
       this.totalPrice +=this.totalPacakging;

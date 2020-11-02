@@ -54,7 +54,9 @@ export class BillingDetailsComponent implements OnInit {
       console.log(productseller);
       totalPacakging += 5 * productseller.product.quantity;
       total += (productseller.product.price * productseller.product.quantity);
-      totalCleaning += productseller.product.cleaningFee.feeAmount * productseller.product.quantity;
+      if (productseller.product.cleaningFee.id != 0) {
+        totalCleaning += productseller.product.cleaningFee.feeAmount * productseller.product.quantity;
+      }
 
 
     });
