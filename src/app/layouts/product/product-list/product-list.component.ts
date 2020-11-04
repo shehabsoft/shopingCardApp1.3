@@ -7,7 +7,7 @@ import { ProductF } from 'src/app/shared/models/productF';
 import { Observable } from 'rxjs';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 import { TranslateService } from "../../../shared/services/translate.service";
-
+import { Title } from '@angular/platform-browser';
 declare var toastr: any;
 @Component({
 	selector: 'app-product-list',
@@ -27,11 +27,12 @@ export class ProductListComponent implements OnInit{
 	constructor(
       public authService: AuthServiceLocal,
       private productService: ProductService,
-      private toastrService: ToastrService, public translate: TranslateService
+      private toastrService: ToastrService, public translate: TranslateService, private titleService: Title
 	) { }
 
 	ngOnInit() {
-		this.getAllProducts();
+      this.getAllProducts();
+      this.setTitle("جميع اصناف الخدمات الزكية ");
   }
   setLang(lang: string) {
     // console.log("Language", lang);
@@ -58,7 +59,9 @@ export class ProductListComponent implements OnInit{
 			}
 		);
   }
-
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
+  }
   getImageUrl(image: Blob): string {
     let reader = new FileReader();
     console.log("image Data :" + image);

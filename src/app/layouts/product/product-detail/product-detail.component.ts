@@ -7,6 +7,7 @@ import { ProductF } from 'src/app/shared/models/productF';
 import { ProductsSeller } from 'src/app/shared/models/productsSeller';
 import { AuthServiceLocal } from 'src/app/shared/services/auth.service.local';
 import { TranslateService } from 'src/app/shared/services/translate.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-product-detail',
@@ -22,7 +23,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 		private route: ActivatedRoute,
 		private productService: ProductService,
       private toastrService: ToastrService,
-      public authService: AuthServiceLocal,public translate: TranslateService
+      public authService: AuthServiceLocal, public translate: TranslateService, private titleService: Title
      
 	) {
       this.product = new ProductF();
@@ -36,9 +37,13 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
           this.productSeller = this.productService.getLocalProductById(id);
      
         this.product = this.productSeller.product;
+        this.setTitle(this.product.nameAr +"  : " + this.product.price +"   جنيه");
         console.log("Selected Product :" + this.product);
 		});
-	}
+  }
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
+  }
 
 	getProductDetail(id: string) {
 		// this.spinnerService.show();
