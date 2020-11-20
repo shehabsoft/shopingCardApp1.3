@@ -12,9 +12,12 @@ import { TranslateService } from 'src/app/shared/services/translate.service';
 	styleUrls: [ './cart-products.component.scss' ]
 })
 export class CartProductsComponent implements OnInit {
+  selectedValue: 0; 
 	cartProducts: ProductsSeller[];
   showDataNotFound = true;
   cleaningFlages: CleaningFee[];
+  quantities: number[];
+
   cleaningFeeID: number;
 	// Not Found Message
 	messageTitle = 'No Products Found in Cart';
@@ -26,6 +29,9 @@ export class CartProductsComponent implements OnInit {
 
     this.cartProducts = this.productService.getLocalCartProducts();
     this.getCleaningFlages();
+    this.quantities = [0.5,1, 2, 3];
+
+
 	}
 
 	removeCartProduct(product: Product) {

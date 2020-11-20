@@ -3,6 +3,7 @@ import { OrderService } from 'src/app/shared/services/order.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from 'src/app/shared/models/order';
+import { TranslateService } from 'src/app/shared/services/translate.service';
  
 
 @Component({
@@ -15,7 +16,7 @@ export class OrderDetailsComponent implements OnInit {
   order: Order;
   constructor(private route: ActivatedRoute, private router: Router,
     private ordertService: OrderService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService, public translate: TranslateService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe((params) => {

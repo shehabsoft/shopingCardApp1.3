@@ -3,9 +3,11 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\shared",
-    "\\src\\app\\shared\\models"
+    "\\src\\app\\layouts",
+    "\\src\\app\\layouts\\product",
+    "\\src\\app\\layouts\\product\\product-detail",
+    "\\src\\app\\layouts\\product\\product-list"
   ],
-  "SelectedNode": "\\src\\app\\shared\\models\\constant.ts",
+  "SelectedNode": "\\src\\app\\layouts\\product\\product-list\\product-list.component.ts",
   "PreviewInSolutionExplorer": false
 }

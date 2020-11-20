@@ -29,9 +29,9 @@
                 </a>
                 <p class="card-title">
                   <strong>
-                    Cleaning :<a [routerLink]="['/products/product', product.product.id]" routerLinkActive="router-link-active">
+                   Cleaning Technique  :<a [routerLink]="['/products/product', product.product.id]" routerLinkActive="router-link-active">
                       {{
-                          product.cleaningFee.feesNameEn
+                          product.cleaningFee.feesNameAr
                       }}
                     </a>
                   </strong>
@@ -47,6 +47,12 @@
 
                     <p class="card-text">
                       Quantity :   {{ product.quantity }}
+                    </p>
+                    <p class="card-text">
+                      Unit Price :   {{ product.product.price }}
+                    </p>
+                    <p class="card-text">
+                      Total Price :   {{ product.product.price* product.quantity}}
                     </p>
 
 

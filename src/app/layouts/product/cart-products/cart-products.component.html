@@ -44,9 +44,14 @@
                     <a class="text-muted">
                       {{translate.data["QUANTITY"] | translate}}
                     </a>
-                    
-                    <input type="number" name="quantity" style="width:100%" class="form-control" [(ngModel)]="product.product.quantity" placeholder="1" (click)="updatequantity(product.product)"
-                           id="quantity" value="" required>
+
+                 
+                    <select class="custom-select d-block w-100" style="width:100% !important" required #mySelect1
+                            (change)='updatequantity(product.product)' id="quantity" [(ngModel)]="product.product.quantity">
+                      <option *ngFor="let item of quantities; let i = index" [value]="quantities[i]">
+                        {{quantities[i]}}
+                      </option>
+                    </select>
                     <div class="invalid-feedback">
                       Valid first name is required.
                     </div>
@@ -58,7 +63,7 @@
                     <a class="text-muted">
                       {{translate.data["CLEANING-TECHNIQUE"] | translate}}
                     </a>
-                    <select class="custom-select d-block w-100" style="width:100% !important"  #mySelect  
+                    <select class="custom-select d-block w-100" style="width:100% !important"  required  #mySelect  
                       (change)='onOptionsSelected(product.product,mySelect.value)' id="cleaningFlages" [(ngModel)]="product.product.cleaningFee.id">
                       <option *ngFor="let cleaningFlage of cleaningFlages; let i = index" [value]="cleaningFlages[i].id">
                         {{cleaningFlages[i].feesNameAr}}
