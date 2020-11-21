@@ -4,6 +4,7 @@ import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from 'src/app/shared/models/order';
 import { TranslateService } from 'src/app/shared/services/translate.service';
+import { OrdersProducts } from 'src/app/shared/models/ordersProducts';
  
 
 @Component({
@@ -14,6 +15,8 @@ import { TranslateService } from 'src/app/shared/services/translate.service';
 export class OrderDetailsComponent implements OnInit {
   private sub: any;
   order: Order;
+  totalSellerValue = 0;
+  orderProfitValue = 0;
   constructor(private route: ActivatedRoute, private router: Router,
     private ordertService: OrderService,
     private toastrService: ToastrService, public translate: TranslateService) { }
@@ -24,6 +27,19 @@ export class OrderDetailsComponent implements OnInit {
       console.log("get Order Details with ID " + id);
       this.order = this.ordertService.getLocalOrderById(id);
       console.log(this.order);
+
+      const products: OrdersProducts[] = this.order.ordersProducts;
+      this.totalSellerValue = 0;
+      this.orderProfitValue = 0;
+      products.forEach((productseller) => {
+        if (productseller.cleaningFee != null) {
+          this.totalSellerValue += productseller.product.sellerPrice * productseller.quantity + (productseller.quantity * 5);
+        } else {
+          this.totalSellerValue += productseller.product.sellerPrice * productseller.quantity  
+        }
+       
+      });
+      this.orderProfitValue= this.order.total - this.totalSellerValue - 30;
     });
   }
   fullFillOrder() {

@@ -1,5 +1,5 @@
 <br />
-<div class="col-md-9">
+<div class="col-md-12">
   <div class="container">
 
     <div class="row" *ngIf="!loading">
@@ -52,8 +52,21 @@
                       Unit Price :   {{ product.product.price }}
                     </p>
                     <p class="card-text">
-                      Total Price :   {{ product.product.price* product.quantity}}
+                      Unit Seller Price :   {{ product.product.sellerPrice}}
                     </p>
+                    <p class="card-text">
+                      Customer Price :   {{ product.product.price* product.quantity}}
+                    </p>
+                    <p class="card-text">
+                      Seller Price :   {{ product.product.sellerPrice* product.quantity}}
+                    </p>
+                    <p class="card-text">
+                      Package Price :   {{ (product.quantity*5)}}
+                    </p>
+                    <p class="card-text">
+                      Profit :   {{ (product.product.price* product.quantity)-(product.product.sellerPrice* product.quantity)}}
+                    </p>
+
 
 
                   </span>
@@ -86,7 +99,19 @@
                 <div>
                   <h6 class="my-0">Order Price</h6>
                 </div>
-                <span class="text-muted" style="color:crimson !important">EGP {{order.total}}</span>
+                <span class="text-muted" style="color:crimson !important"> {{order.total}} EGP</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Order Seller Price</h6>
+                </div>
+                <span class="text-muted" style="color:red !important"> {{totalSellerValue}} EGP</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Order Profit Value</h6>
+                </div>
+                <span class="text-muted" style="color:green !important">  {{orderProfitValue}} EGP</span>
               </li>
               <li class="list-group-item d-flex justify-content-between lh-condensed">
                 <div>

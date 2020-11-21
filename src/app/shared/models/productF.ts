@@ -7,6 +7,7 @@ export class ProductF {
   nameAr: string;
   nameEn: string;
   price: number;
+  sellerPrice: number;
   quantity: number;
   details: string;
   updated_at: Date;
