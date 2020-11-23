@@ -93,6 +93,16 @@
               <td>  </td>
               <td> </td>
               <td class="text-right">
+                <p><strong>Packing: </strong></p>
+              </td>
+              <td class="text-center text-danger">
+                <h4><strong>EGP {{ totalPacakging}}</strong></h4>
+              </td>
+            </tr>
+            <tr>
+              <td>  </td>
+              <td> </td>
+              <td class="text-right">
                 <p><strong>Total: </strong></p>
               </td>
               <td class="text-center text-danger">
@@ -102,9 +112,13 @@
           </tbody>
         </table>
         <table>
-          <tr><td style="width:100%"> <h6> <mark>Order pending Confirmation</mark></h6></td>
+          <tr><td style="width:100%"><div class="alert alert-warning" role="alert">
+                                       <mark>Order pending Confirmation Please Confirm !!!!!</mark>!
+                                    </div> 
+
+            </td>
             <td>
-              <button  class="btn btn-success btn-lg btn-block" type="button" (click)="completeOrder()">
+              <button  class="btn btn-primary btn-success btn-lg btn-block" type="button" (click)="completeOrder()">
                 Confirm Order
                 <span class="glyphicon glyphicon-chevron-right"></span>
               </button>
