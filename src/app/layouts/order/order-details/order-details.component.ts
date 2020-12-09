@@ -17,6 +17,8 @@ export class OrderDetailsComponent implements OnInit {
   order: Order;
   totalSellerValue = 0;
   orderProfitValue = 0;
+  packagePriceValue = 0;
+  totalCleaning = 0;
   constructor(private route: ActivatedRoute, private router: Router,
     private ordertService: OrderService,
     private toastrService: ToastrService, public translate: TranslateService) { }
@@ -31,15 +33,20 @@ export class OrderDetailsComponent implements OnInit {
       const products: OrdersProducts[] = this.order.ordersProducts;
       this.totalSellerValue = 0;
       this.orderProfitValue = 0;
+      this.packagePriceValue = 0;
+      this.totalCleaning = 0;
       products.forEach((productseller) => {
-        if (productseller.cleaningFee != null) {
-          this.totalSellerValue += productseller.product.sellerPrice * productseller.quantity + (productseller.quantity * 5);
+        this.packagePriceValue += (productseller.quantity * 5);
+        if (productseller.cleaningFee.id!=3) {//  3 is id for no cleaning
+          this.totalSellerValue += productseller.product.sellerPrice * productseller.quantity;
+          this.totalCleaning += (productseller.quantity * 5);
         } else {
           this.totalSellerValue += productseller.product.sellerPrice * productseller.quantity  
         }
+        this.orderProfitValue+=  (productseller.product.price * productseller.quantity) - (productseller.product.sellerPrice * productseller.quantity)
        
       });
-      this.orderProfitValue= this.order.total - this.totalSellerValue - 30;
+      //this.orderProfitValue = this.order.total - this.totalSellerValue - 30 - this.totalCleaning - this.packagePriceValue  ;
     });
   }
   fullFillOrder() {
