@@ -59,6 +59,10 @@ export class AddProductComponent implements OnInit {
     this.category.name_ar = "SHEEP";
     this.category.name_en = "SHEEP";
     this.categoryList.push(this.category);
+    this.category = new Category();
+    this.category.name_ar = "BIRDS";
+    this.category.name_en = "BIRDS";
+    this.categoryList.push(this.category);
 
   
 

@@ -18,7 +18,7 @@ declare var toastr: any;
 export class ProductListComponent implements OnInit{
 	productList: ProductsSeller[];
 	loading = false;
-  brands = ['All', 'FISH', 'SHEEP', 'MEAT', 'CLEANING','SWEETS'];
+  brands = ['All', 'FISH', 'SHEEP', 'MEAT', 'CLEANING','SWEETS','BIRDS'];
    imageUrl;
 	selectedBrand: 'All';
 

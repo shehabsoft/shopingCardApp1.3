@@ -126,6 +126,23 @@ export class OrderService {
 
 
   }
+  cancelOrder(order: Order): Observable<Order> {
+    order.status = 5;
+    console.log("Before Creation")
+    const url = apiUrl + order.id;
+    return this.http.put<Order>(url, order, httpOptions).pipe(
+      tap(hero => {
+        console.log(hero);
+        this.getOrders(this.user.id).subscribe((heros) => {
+          this.orders = heros;
+        });
+
+      }
+      )
+    );
+
+
+  }
 
  
    

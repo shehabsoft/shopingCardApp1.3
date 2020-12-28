@@ -58,5 +58,14 @@ export class OrderDetailsComponent implements OnInit {
 
     });
   }
+  cancelOrder() {
+    this.ordertService.cancelOrder(this.order).subscribe(response => {
+      this.toastrService.success("Order " + response.id + " Has Been Canceled ", 'Cancel Order');
+
+      this.router.navigate(['orders']);
+
+
+    });
+  }
 
 }
