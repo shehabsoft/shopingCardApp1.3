@@ -54,13 +54,15 @@ export class BillingDetailsComponent implements OnInit {
       console.log(productseller);
       totalPacakging += 5 * productseller.product.quantity;
       total += (productseller.product.price * productseller.product.quantity);
-      if (productseller.product.cleaningFee.id != 0) {
+      if (productseller.product.cleaningFee!=null&&productseller.product.cleaningFee.id != 0) {
         totalCleaning += productseller.product.cleaningFee.feeAmount * productseller.product.quantity;
       }
 
 
     });
     this.totalPrice += total + totalCleaning + totalPacakging;
+    this.order.total = this.totalPrice;
+    this.productService.setLocalOrder(this.order);
       }
 
 	updateUserDetails(form: NgForm) {

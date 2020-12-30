@@ -35,7 +35,7 @@ export class OrderListComponent implements OnInit {
  
         products.forEach((productseller) => {
           this.packagePriceValue += (productseller.quantity * 5);
-          if (productseller.cleaningFee.id != 3) {//  3 is id for no cleaning
+          if (productseller.cleaningFee.id != 3 && productseller.cleaningFee.feeAmount>0) {//  3 is id for no cleaning
             this.totalSellerValue += productseller.product.sellerPrice * productseller.quantity;
             this.totalCleaning += (productseller.quantity * 5);
           } else {

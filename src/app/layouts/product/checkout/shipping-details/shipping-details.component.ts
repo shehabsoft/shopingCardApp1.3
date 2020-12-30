@@ -62,7 +62,7 @@ export class ShippingDetailsComponent implements OnInit {
       this.productsSeller.forEach((productSeller) => {
 		//	delete product['id'];
         totalPrice += productSeller.product.price * productSeller.product.quantity;
-        if (productSeller.product.cleaningFee.id!=0) {
+        if (productSeller.product.cleaningFee!=null&&productSeller.product.cleaningFee.id!=0) {
           totalCleaning += productSeller.product.cleaningFee.feeAmount;
 
         }

@@ -24,4 +24,5 @@ export class Product {
   img_data: Blob;
   category: string;
   cleaningFee: CleaningFee;
+  status: number;
 }

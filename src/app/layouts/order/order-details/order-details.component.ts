@@ -37,7 +37,7 @@ export class OrderDetailsComponent implements OnInit {
       this.totalCleaning = 0;
       products.forEach((productseller) => {
         this.packagePriceValue += (productseller.quantity * 5);
-        if (productseller.cleaningFee.id!=3) {//  3 is id for no cleaning
+        if (productseller.cleaningFee.feeAmount > 0 && productseller.cleaningFee.id != 3) {//  3 is id for no cleaning
           this.totalSellerValue += productseller.product.sellerPrice * productseller.quantity;
           this.totalCleaning += (productseller.quantity * 5);
         } else {
@@ -58,14 +58,7 @@ export class OrderDetailsComponent implements OnInit {
 
     });
   }
-  cancelOrder() {
-    this.ordertService.cancelOrder(this.order).subscribe(response => {
-      this.toastrService.success("Order " + response.id + " Has Been Canceled ", 'Cancel Order');
-
-      this.router.navigate(['orders']);
-
-
-    });
+   
   }
 
-}
+

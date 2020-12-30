@@ -17,6 +17,7 @@ export class ProductF {
   imgData: Blob;
   cleaningFee: CleaningFee;
   user: User;
+  status: number;
 
 
 }
