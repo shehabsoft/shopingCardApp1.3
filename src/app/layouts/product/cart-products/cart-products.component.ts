@@ -29,7 +29,7 @@ export class CartProductsComponent implements OnInit {
 
     this.cartProducts = this.productService.getLocalCartProducts();
     this.getCleaningFlages();
-    this.quantities = [0.5,1, 2, 3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8];
+    this.quantities = [0.5,1,1.5, 2,2.5, 3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8];
 
 
 	}
